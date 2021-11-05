@@ -2,20 +2,20 @@ import { useState } from 'react';
 // import { useSelector } from 'react-redux';
 // import { NavLink, Route, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 // import {addUser} from '../../store/session';
 import * as sessionActions from '../../store/session';
 
 const LoginFormPage = () => {
     const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const sessionUser = useSelector(state=> state.session.user)
+    // const navigate = useNavigate()
+    // const sessionUser = useSelector(state=> state.session.user)
     const [credential, setCredential] = useState('')
     const [password, setPassword] = useState('')
     const [errors, setErrors] = useState([])
 
-    if(sessionUser) navigate('/')
+    // if(sessionUser) return(<Redirect push to='/' />)
 
     const onSubmit = async(e) => {
         e.preventDefault()

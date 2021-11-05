@@ -1,4 +1,5 @@
 const ADD_USER = 'session/ADD_USER'
+const SET_USER = 'session/SET_USER'
 const DEL_USER = 'session/DEL_USER'
 
 export const add = (user) => {
@@ -14,6 +15,13 @@ export const del = () => {
     }
 }
 
+export const set = (user) => {
+    return {
+        type: SET_USER,
+        payload: user
+    }
+}
+
 export const login = (user) => async dispatch => {
     const {credential, password} = user
     const response = await fetch('/api/session', {
@@ -24,6 +32,12 @@ export const login = (user) => async dispatch => {
     const newUser = await response.json()
     dispatch(add(newUser.user))
     return response
+}
+
+export const restoreUser = () => async dispatch => {
+    const response = await fetch('/api/session')
+    const res = await response.json()
+    dispatch(set(res.user))
 }
 
 const sessionReducer = (state={user:null}, action) => {
