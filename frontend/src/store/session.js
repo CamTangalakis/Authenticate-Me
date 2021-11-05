@@ -1,5 +1,6 @@
+import {csrfFetch} from './csrf'
+
 const ADD_USER = 'session/ADD_USER'
-const SET_USER = 'session/SET_USER'
 const DEL_USER = 'session/DEL_USER'
 
 export const add = (user) => {
@@ -15,16 +16,9 @@ export const del = () => {
     }
 }
 
-export const set = (user) => {
-    return {
-        type: SET_USER,
-        payload: user
-    }
-}
-
 export const login = (user) => async dispatch => {
     const {credential, password} = user
-    const response = await fetch('/api/session', {
+    const response = await csrfFetch('/api/session', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({credential, password})
@@ -35,9 +29,23 @@ export const login = (user) => async dispatch => {
 }
 
 export const restoreUser = () => async dispatch => {
-    const response = await fetch('/api/session')
+    const response = await csrfFetch('/api/session')
     const res = await response.json()
-    dispatch(set(res.user))
+    dispatch(add(res.user))
+    return response
+}
+
+export const signup = (user) => async dispatch => {
+    const {username, email, password} = user
+    const response = await csrfFetch('/api/users', {
+        method: 'POST',
+        body: JSON.stringify({
+            username, email, password
+        })
+    })
+    const data = await response.json()
+    dispatch(add(data.user))
+    return response
 }
 
 const sessionReducer = (state={user:null}, action) => {

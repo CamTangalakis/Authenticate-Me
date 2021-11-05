@@ -3,23 +3,24 @@ import { useDispatch } from 'react-redux';
 
 import * as sessionActions from '../../store/session';
 
-const LoginFormPage = () => {
+const SignUpFormPage = () => {
     const dispatch = useDispatch()
-    const [credential, setCredential] = useState('')
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
     const [errors, setErrors] = useState([])
 
     const onSubmit = async(e) => {
         e.preventDefault()
         setErrors([])
 
-        return dispatch(sessionActions.login({ credential, password }))
+        return dispatch(sessionActions.signup({username, email, password}))
             .catch(async (res) => {
                 const data = await res.json();
                 console.log(data.errors)
                 if (data && data.errors) setErrors(data.errors);
       });
-
     }
 
     return (
@@ -30,18 +31,30 @@ const LoginFormPage = () => {
             <label>Username:</label>
                 <input
                     type='text'
-                    placeholder='Enter username or email'
-                    value={credential}
-                    onChange={(e)=>setCredential(e.target.value)} />
+                    placeholder='Enter username'
+                    value={username}
+                    onChange={(e)=>setUsername(e.target.value)} />
+            <label>Email:</label>
+                <input
+                    type='text'
+                    placeholder='Enter username'
+                    value={email}
+                    onChange={(e)=>setEmail(e.target.value)} />
             <label>Password:</label>
                 <input
                     type='text'
                     placeholder='Enter password'
                     value={password}
                     onChange={(e)=>setPassword(e.target.value)} />
-            <button type='submit'>Login</button>
+            <label>Confirm Password:</label>
+                <input
+                    type='text'
+                    placeholder='Enter username'
+                    value={confirmPassword}
+                    onChange={(e)=>setConfirmPassword(e.target.value)} />
+            <button type='submit'>Sign Up</button>
         </form>
     )
 }
 
-export default LoginFormPage
+export default SignUpFormPage
