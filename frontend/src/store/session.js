@@ -1,42 +1,44 @@
 const ADD_USER = 'session/ADD_USER'
 const DEL_USER = 'session/DEL_USER'
 
-export const add = (userId) => {
+export const add = (user) => {
     return {
         type: ADD_USER,
-        userId
+        payload: user
     }
 }
 
-export const del = (userId) => {
+export const del = () => {
     return {
-        type: DEL_USER,
-        userId
+        type: DEL_USER
     }
 }
 
-export const addUser = (user) => async dispatch => {
+export const login = (user) => async dispatch => {
+    const {credential, password} = user
     const response = await fetch('/api/session', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(user)
+        body: JSON.stringify({credential, password})
     })
     const newUser = await response.json()
-    dispatch(add(newUser))
+    dispatch(add(newUser.user))
+    return response
 }
 
-const sessionReducer = (state={}, action) => {
+const sessionReducer = (state={user:null}, action) => {
+    let newState
     switch(action.type){
         case ADD_USER:
-            const newState = {
+            newState = {
                 ...state,
                 [action.userId]: {id: action.userId}
             }
             return newState
         case DEL_USER:
-            const newStateDel = {...state}
-            delete newStateDel[action.userId]
-            return newStateDel
+            newState = {...state}
+            delete newState[action.userId]
+            return newState
         default:
             return state
     }
