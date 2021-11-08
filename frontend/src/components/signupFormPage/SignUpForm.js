@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import './signup.css'
 
 import * as sessionActions from '../../store/session';
 
@@ -26,35 +27,36 @@ const SignUpFormPage = () => {
     }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form className='signUpForm' onSubmit={onSubmit}>
             <ul>
                 {errors.map(e=> <li key={e}>{e}</li>)}
             </ul>
-            <label>Username:</label>
+            <h3 id='signUpHeader'>Sign Up</h3>
+            <label id='signUpField'>Username:</label>
                 <input
                     type='text'
                     placeholder='Enter username'
                     value={username}
                     onChange={(e)=>setUsername(e.target.value)} />
-            <label>Email:</label>
+            <label id='signUpField'>Email:</label>
                 <input
                     type='text'
                     placeholder='Enter username'
                     value={email}
                     onChange={(e)=>setEmail(e.target.value)} />
-            <label>Password:</label>
+            <label id='signUpField'>Password:</label>
                 <input
-                    type='text'
+                    type='password'
                     placeholder='Enter password'
                     value={password}
                     onChange={(e)=>setPassword(e.target.value)} />
-            <label>Confirm Password:</label>
+            <label id='signUpField'>Confirm Password:</label>
                 <input
-                    type='text'
+                    type='password'
                     placeholder='Enter username'
                     value={confirmPassword}
                     onChange={(e)=>setConfirmPassword(e.target.value)} />
-            <button type='submit'>Sign Up</button>
+            <button id='signUpButton' type='submit'>Sign Up</button>
         </form>
     )
 }

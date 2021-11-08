@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Routes } from "react-router-dom";
-import SignupFormPage from "./components/signupFormPage";
+// import { Route, Routes } from "react-router-dom";
 import * as sessionActions from "./store/session";
-import Navigation from "./components/navigation";
+import Navigation from "./components/navigation/index";
+import Feed from "./components/feed/index";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,12 +16,11 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
-        <Routes>
-          {/* <Route path="/signup">
-            <p> HELLOOOOO </p>
-            <SignupFormPage />
-          </Route> */}
-        </Routes>
+      <Feed />
+          // <Routes>
+          //   <Route exact path="/">
+          //   </Route>
+          // </Routes>
       )}
     </>
   );
