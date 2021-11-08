@@ -55,22 +55,3 @@ router.delete('/', (_req, res) => {
 );
 
 module.exports = router;
-
-
-// fetch('/api/session', {
-//     method: 'POST',
-//     headers: {
-//       "Content-Type": "application/json",
-//       "XSRF-TOKEN": `OkcCeivq-7wKehw2opmMQocHYnJc_c8OIV3I`
-//     },
-//     body: JSON.stringify({ credential: 'Demo-lition', password: 'password' })
-//   }).then(res => res.json()).then(data => console.log(data));
-
-//   fetch('/api/session', {
-//     method: 'POST',
-//     headers: {
-//       "Content-Type": "application/json",
-//       "XSRF-TOKEN": `OkcCeivq-7wKehw2opmMQocHYnJc_c8OIV3I`
-//     },
-//     body: JSON.stringify({ credential: 'demo@user.io', password: 'password' })
-//   }).then(res => res.json()).then(data => console.log(data));

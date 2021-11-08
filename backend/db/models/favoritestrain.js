@@ -5,8 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     strainId: DataTypes.INTEGER
   }, {});
   FavoriteStrain.associate = function(models) {
-    FavoriteStrain.belongsTo(models.User, {foreignKey: userId})
-    FavoriteStrain.belongsTo(models.Strain, {foreignKey: strainId})
+    FavoriteStrain.belongsTo(models.User, {foreignKey: 'userId'})
+    FavoriteStrain.belongsTo(models.Strain, {foreignKey: 'strainId'})
   };
   return FavoriteStrain;
 };
