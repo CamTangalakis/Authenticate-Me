@@ -5,7 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {});
   Dispensary.associate = function(models) {
-    // associations can be defined here
+    Dispensary.hasMany(models.FavoriteDispensary, {foreignKey: dispensaryId})
+    Dispensary.hasMany(models.Strain, {foreignKey: strainId})
+    Dispensary.belongsTo(models.User, {foreignKey: ownerId})
   };
   return Dispensary;
 };

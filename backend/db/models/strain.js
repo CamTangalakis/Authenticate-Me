@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT
   }, {});
   Strain.associate = function(models) {
-    // associations can be defined here
+    Strain.hasMany(models.FavoriteStrain, {foreignKey: strainId})
+    Strain.hasMany(models.Checkin, {foreignKey: strainId})
   };
   return Strain;
 };
