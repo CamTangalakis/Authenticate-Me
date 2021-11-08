@@ -1,62 +1,20 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { Modal } from '../../context/Modal';
+import SignUpForm from './SignUpForm';
 
-import * as sessionActions from '../../store/session';
+function SignUpFormModal() {
+  const [showModal, setShowModal] = useState(false);
 
-const SignUpFormPage = () => {
-    const dispatch = useDispatch()
-    const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
-    const [errors, setErrors] = useState([])
-
-    const onSubmit = async(e) => {
-        e.preventDefault()
-        if(password === confirmPassword){
-            setErrors([])
-
-            return dispatch(sessionActions.signup({email, username, password}))
-                .catch(async (res) => {
-                    const data = await res.json();
-                    if (data && data.errors) setErrors(data.errors);
-          });
-        }
-        return setErrors(['Confirm Password field must be the same as the Password field']);
-    }
-
-    return (
-        <form onSubmit={onSubmit}>
-            <ul>
-                {errors.map(e=> <li key={e}>{e}</li>)}
-            </ul>
-            <label>Username:</label>
-                <input
-                    type='text'
-                    placeholder='Enter username'
-                    value={username}
-                    onChange={(e)=>setUsername(e.target.value)} />
-            <label>Email:</label>
-                <input
-                    type='text'
-                    placeholder='Enter username'
-                    value={email}
-                    onChange={(e)=>setEmail(e.target.value)} />
-            <label>Password:</label>
-                <input
-                    type='text'
-                    placeholder='Enter password'
-                    value={password}
-                    onChange={(e)=>setPassword(e.target.value)} />
-            <label>Confirm Password:</label>
-                <input
-                    type='text'
-                    placeholder='Enter username'
-                    value={confirmPassword}
-                    onChange={(e)=>setConfirmPassword(e.target.value)} />
-            <button type='submit'>Sign Up</button>
-        </form>
-    )
+  return (
+    <>
+      <button onClick={() => setShowModal(true)}>Sign Up</button>
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <SignUpForm />
+        </Modal>
+      )}
+    </>
+  );
 }
 
-export default SignUpFormPage
+export default SignUpFormModal;
