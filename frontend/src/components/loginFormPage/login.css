@@ -1,0 +1,23 @@
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px;
+    padding-bottom: 20px;
+    background-color: rgb(10, 85, 39);
+    max-width: 150px;
+}
+
+#loginField{
+    padding: 10px 0px;
+    color: white;
+}
+
+#loginButton{
+    padding: 5px;
+    margin: 10px;
+}
+
+#loginHeader{
+    font-size: 30px;
+    color: white;
+}
