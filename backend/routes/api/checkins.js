@@ -1,9 +1,8 @@
-// import {store} from '../../../frontend/src/index'
 const express = require('express')
 const asyncHandler = require('express-async-handler');
-const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
-const { setTokenCookie, requireAuth } = require('../../utils/auth');
+// const { check } = require('express-validator');
+// const { handleValidationErrors } = require('../../utils/validation');
+// const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { Checkin, Strain } = require('../../db/models');
 const router = express.Router();
 
@@ -24,5 +23,10 @@ router.get('/', asyncHandler(async(req, res)=> {
     let checkins = Checkin.findAll()
     res.json(checkins)
 }))
+
+// router.get('/', asyncHandler(async(req, res)=> {
+//     let strains = Strain.findAll()
+//     res.json(strains)
+// }))
 
 module.exports = router;
