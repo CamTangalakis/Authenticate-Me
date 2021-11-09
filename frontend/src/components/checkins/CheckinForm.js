@@ -3,6 +3,7 @@ import * as checkinActions from '../../store/checkin';
 import * as strainActions from '../../store/strain'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import './checkin.css'
 
 const CheckinForm = () => {
     const dispatch = useDispatch()
@@ -26,18 +27,20 @@ const CheckinForm = () => {
     }, [dispatch])
 
     return (
-        <form onSubmit={onSubmit}>
-            <label>Choose a Strain:</label>
+        <form onSubmit={onSubmit} className='checkinForm'>
+            <h2 id='checkinHeader'>Check In</h2>
+            <label id='checkinField'>Choose a Strain:</label>
                 <select onChange={e=> setStrainId(e.target.value)}>
                     {/* {Object.keys(strains).map((key)=> <option value={strains[key].id}>{strains[key].name} </option>)} */}
                 </select>
-            <label>Comment:</label>
+            <label id='checkinField'>Comment:</label>
                 <input
+                    id='checkinText'
                     type='textarea'
                     placeholder='Say something...'
                     value={text}
                     onChange={(e)=>setText(e.target.value)} />
-            <button type='submit'>Submit</button>
+            <button type='submit' id='checkInButton'>Submit</button>
         </form>
     )
 }

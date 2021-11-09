@@ -57,7 +57,7 @@ export const delComment = () => async (dispatch) => {
     return response
 }
 
-const commentReducer = (state={user:'Demo-lition'}, action) => {
+const commentReducer = (state={user:'Demo-used'}, action) => {
     let newState
     switch(action.type){
         case COMMENT:

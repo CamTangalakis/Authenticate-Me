@@ -2,3 +2,15 @@
     display: inline-flex;
     flex-direction: column;
 }
+
+#feedParts{
+    background-color: rgb(223, 243, 221);
+    padding: 10px;
+    margin: 10px;
+    height: fit-content;
+    width: 90%;
+}
+
+.sideBar{
+    display: flex;
+}

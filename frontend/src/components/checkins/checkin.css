@@ -1,0 +1,31 @@
+.checkinForm{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px;
+    padding-bottom: 20px;
+    background-color: rgb(10, 85, 39);
+    max-width: 300px;
+}
+
+#checkinField{
+    padding: 10px 0px;
+    color: white;
+}
+
+#checkInButton{
+    padding: 5px;
+    margin: 10px;
+}
+
+#checkinHeader{
+    font-size: 30px;
+    color: white;
+}
+
+#checkinText{
+    height: 50px;
+}
+
+#checkinText::placeholder{
+    text-align: top;
+}

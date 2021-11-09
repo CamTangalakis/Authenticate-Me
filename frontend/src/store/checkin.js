@@ -58,7 +58,7 @@ export const delCheckin = () => async (dispatch) => {
     return response
 }
 
-const checkinReducer = (state={user:'Demo-lition'}, action) => {
+const checkinReducer = (state={user:'Demo-used'}, action) => {
     let newState
     switch(action.type){
         case CHECKIN:

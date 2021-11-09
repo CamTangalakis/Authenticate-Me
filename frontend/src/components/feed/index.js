@@ -7,7 +7,9 @@ export default function Feed() {
     const dispatch = useDispatch()
     const checkins = useSelector((state) => state.checkin)
     const currentUser = useSelector((state) => state.session.user)
-    console.log(currentUser, '<-----------------')
+    // const strains = useSelector((state)=> state)
+    // console.log(currentUserId, '<-----------------')
+    // console.log(checkins, strains, '<-----------------')
     // const [checkin, setCheckin] = useState()
 
     // dispatch(sessionActions.getCheckin())
@@ -16,20 +18,28 @@ export default function Feed() {
         dispatch(sessionActions.getCheckin())
     }, [dispatch])
 
+    function deleteCheckin () {
+        dispatch(sessionActions.delCheckin())
+    }
+
     return (
-        <>
-            <h1 className='feedLayout'>feed</h1>
+        <div className='feedLayout'>
+            <h1>feed</h1>
                 {Object.keys(checkins).map((key) =>
-                <div id=''>
-                    {/* <h1>{checkins[key]}</h1> */}
+                <div id='feedParts'>
+
                     <a href='/'>Strain Name</a>
                     <p>{checkins[key].text}</p>
 
-                    {/* {if currentUser.id === checkins[key].id} */}
-                    <button type='button'>Edit</button>
-                    <button type='button'>Delete</button>
+                    {currentUser.id === checkins[key].userId ? (
+                        <div id='checkinButtons'>
+                            <button type='button'>Edit</button>
+                            <button type='button' onClick={deleteCheckin}>Delete</button>
+                        </div>
+                    ) : null}
+
                 </div>
                 )}
-        </>
+        </div>
     )
 }
