@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import * as sessionActions from '../../store/actions';
+import React, { useEffect, useState } from 'react';
+import * as checkinActions from '../../store/checkin';
+import * as strainActions from '../../store/strain'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
@@ -9,21 +10,27 @@ const CheckinForm = () => {
     const [text, setText] = useState('')
     const [userId, setUserId] = useState(0)
     const [strainId, setStrainId] = useState(0)
+    const strains = useSelector(state => state.strains)
+    // const checkin = useSelector(state => state.checkin)
+    // console.log(checkin)
 
     const onSubmit = async(e) => {
         e.preventDefault()
         setUserId(sessionUser.id)
-
-        return dispatch(sessionActions.postCheckin({ userId, strainId, text }));
+        return dispatch(checkinActions.postCheckin({ userId, strainId, text }));
     }
+    console.log(strains, '<-------------------')
+
+    useEffect(()=> {
+        dispatch(strainActions.getStrain())
+    }, [dispatch])
 
     return (
         <form onSubmit={onSubmit}>
             <label>Choose a Strain:</label>
-                {/* <select />
-                    <option>
-                        </option>
-                        this option sets the strain id for the checkin*/}
+                <select onChange={e=> setStrainId(e.target.value)}>
+                    {Object.keys(strains).map((key)=> <option value={strains[key].id}>{strains[key].name} </option>)}
+                </select>
             <label>Comment:</label>
                 <input
                     type='textarea'

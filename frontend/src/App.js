@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/navigation/index";
 import Feed from "./components/feed/index";
+import SideBar from './components/feed/sideBar'
+import './index.css'
 
 function App() {
   const dispatch = useDispatch();
@@ -16,7 +18,10 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
-      <Feed />
+      <div className='feed'>
+        <Feed className='feedItems'/>
+        <SideBar className='sideBar'/>
+      </div>
           // <Routes>
           //   <Route exact path="/">
           //   </Route>

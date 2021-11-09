@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import SignUpFormPage from './SignUpForm';
-import Navigation from '../navigation';
+import '../navigation/Navigation.css'
 
 function SignUpFormModal() {
   const [showModal, setShowModal] = useState(false);

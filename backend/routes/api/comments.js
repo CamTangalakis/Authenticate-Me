@@ -1,18 +1,18 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
-const { Checkin } = require('../../db/models');
+const { Comment } = require('../../db/models');
 const router = express.Router();
 
 router.post('/', asyncHandler(async (req, res, next)=> {
-    const {userId, strainId, text} = req.body
-    const checkin = await Checkin.create({userId, strainId, text})
+    const {userId, checkinId, commentBody} = req.body
+    const comment = await Comment.create({userId, checkinId, commentBody})
 
-    return res.json({checkin})
+    return res.json({comment})
 }))
 
 router.get('/', asyncHandler(async(req, res)=> {
-    let checkins = await Checkin.findAll()
-    res.json(checkins)
+    let comment = Comment.findAll()
+    res.json(comment)
 }))
 
 module.exports = router;

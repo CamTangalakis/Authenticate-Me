@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import CheckinForm from './CheckinForm';
-import Navigation from '../navigation';
+import '../navigation/Navigation.css'
 
 function CheckinFormModal() {
   const [showModal, setShowModal] = useState(false);

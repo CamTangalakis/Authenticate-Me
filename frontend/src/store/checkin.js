@@ -3,10 +3,18 @@ import {csrfFetch} from './csrf'
 const CHECKIN = 'actions/checkin'
 const DEL = 'actions/del'
 const EDIT = 'actions/edit'
+const GET = 'actions/get'
 
 export const checkin = (content) => {
     return {
         type: CHECKIN,
+        payload: content
+    }
+}
+
+export const get = (content) => {
+    return {
+        type: GET,
         payload: content
     }
 }
@@ -25,26 +33,32 @@ export const del = () => {
 }
 
 export const postCheckin = (content) => async (dispatch) => {
-    // const {userId, strainId, text} = content
+    const {userId, strainId, text} = content
     const response = await csrfFetch('api/checkins', {
         method: 'POST',
-        body: JSON.stringify()
+        body: JSON.stringify({userId, strainId, text})
     })
     const newPost = await response.json()
     dispatch(checkin(newPost))
     return response
 }
 
+export const getCheckin = () => async (dispatch) => {
+    const checkins = await csrfFetch('api/checkins')
+    const data = await checkins.json()
+    dispatch(get(data))
+    return checkins
+}
+
 export const delCheckin = () => async (dispatch) => {
-    const response = await csrfFetch('untokd/chekins', {
+    const response = await csrfFetch('api/checkins', {
         method: 'DELETE'
     })
     dispatch(checkin())
     return response
 }
 
-
-const sessionReducer = (state={user:null}, action) => {
+const checkinReducer = (state={user:null}, action) => {
     let newState
     switch(action.type){
         case CHECKIN:
@@ -52,6 +66,10 @@ const sessionReducer = (state={user:null}, action) => {
             newState = action.payload;
             return newState;
         case EDIT:
+            newState = Object.assign({}, state);
+            newState = action.payload;
+            return newState;
+        case GET:
             newState = Object.assign({}, state);
             newState = action.payload;
             return newState;
@@ -64,4 +82,4 @@ const sessionReducer = (state={user:null}, action) => {
     }
 }
 
-export default sessionReducer
+export default checkinReducer
