@@ -33,7 +33,7 @@ export const del = () => {
 
 export const postComment = (content) => async (dispatch) => {
     const {userId, checkinId, comment} = content
-    const response = await csrfFetch('api/comments', {
+    const response = await csrfFetch('/api/comments', {
         method: 'POST',
         body: JSON.stringify({userId, checkinId, comment})
     })
@@ -43,14 +43,14 @@ export const postComment = (content) => async (dispatch) => {
 }
 
 export const getComment = () => async (dispatch) => {
-    const comment = await csrfFetch('api/comments')
+    const comment = await csrfFetch('/api/comments')
     const data = await comment.json()
     dispatch(get(data))
     return comment
 }
 
 export const delComment = () => async (dispatch) => {
-    const response = await csrfFetch('api/comments', {
+    const response = await csrfFetch('/api/comments', {
         method: 'DELETE'
     })
     dispatch(comment())

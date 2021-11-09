@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Dispensary.associate = function(models) {
     Dispensary.hasMany(models.FavoriteDispensary, {foreignKey: 'dispensaryId'})
-    Dispensary.hasMany(models.Strain, {foreignKey: 'strainId'})
+    // Dispensary.hasMany(models.Strain, {foreignKey: 'strainId'})
     Dispensary.belongsTo(models.User, {foreignKey: 'ownerId'})
   };
   return Dispensary;

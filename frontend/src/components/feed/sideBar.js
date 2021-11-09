@@ -21,13 +21,16 @@ export default function Feed() {
             {sessionUser ?
                <h1>Welcome, {sessionUser.username}!</h1> :
                <h1>Welcome, user!</h1>}
+
         <h1>Strains</h1>
-            {/* {Object.keys(strains).map((key)=> {
-                <div className='strainFeed'>
-                <h2>{strains[key].name}</h2>
-                <p>{strains[key].description}</p>
-                </div>
-            })} */}
+            <div>
+                {/* {Object.keys(strains).map((key)=> {
+                    <div className='strainFeed'>
+                        <h2>{strains[key].name}</h2>
+                        <p>{strains[key].description}</p>
+                    </div>
+                })} */}
+            </div>
 
         </div>
     )

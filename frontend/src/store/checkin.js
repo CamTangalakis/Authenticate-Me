@@ -34,7 +34,7 @@ export const del = () => {
 
 export const postCheckin = (content) => async (dispatch) => {
     const {userId, strainId, text} = content
-    const response = await csrfFetch('api/checkins', {
+    const response = await csrfFetch('/api/checkins', {
         method: 'POST',
         body: JSON.stringify({userId, strainId, text})
     })
@@ -44,17 +44,19 @@ export const postCheckin = (content) => async (dispatch) => {
 }
 
 export const getCheckin = () => async (dispatch) => {
-    const checkins = await csrfFetch('api/checkins')
+    const checkins = await csrfFetch('/api/checkins', {
+
+    })
     const data = await checkins.json()
     dispatch(get(data))
     return checkins
 }
 
 export const delCheckin = () => async (dispatch) => {
-    const response = await csrfFetch('api/checkins', {
+    const response = await csrfFetch('/api/checkins', {
         method: 'DELETE'
     })
-    dispatch(checkin())
+    dispatch(del())
     return response
 }
 

@@ -17,3 +17,16 @@
     background-color:rgb(223, 243, 221);
     height: fit-content;
 }
+
+.feedButtons{
+    display: flex;
+}
+
+#checkinButtons{
+    display: flex;
+    margin-left: auto;
+}
+
+#deleteButton, #editButton{
+    margin: 0px 5px;
+}

@@ -9,13 +9,13 @@ export const get = (data) => {
     }
 }
 export const getStrain = () => async (dispatch) => {
-    const strain = await csrfFetch('api/strains')
+    const strain = await csrfFetch('/api/strains')
     const data = await strain.json()
     dispatch(get(data))
     return strain
 }
 
-const strainReducer = (state={}, action) => {
+const strainReducer = (state={strain:null}, action) => {
     let newState
     switch(action.type){
         case GET:

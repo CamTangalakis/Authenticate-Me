@@ -7,8 +7,10 @@ export default function Feed() {
     const dispatch = useDispatch()
     const checkins = useSelector((state) => state.checkin)
     const currentUser = useSelector((state) => state.session.user)
+    const comments = useSelector((state )=> state.comments)
+    const strains = useSelector(state => state.strain)
     // const strains = useSelector((state)=> state)
-    // console.log(currentUserId, '<-----------------')
+    console.log(strains, '<-----------------')
     // console.log(checkins, strains, '<-----------------')
     // const [checkin, setCheckin] = useState()
 
@@ -18,8 +20,8 @@ export default function Feed() {
         dispatch(checkinActions.getCheckin())
     }, [dispatch])
 
-    function deleteCheckin () {
-        dispatch(checkinActions.delCheckin())
+    const deleteCheckin = async (e) => {
+        return dispatch(checkinActions.delCheckin())
     }
 
     return (
@@ -28,18 +30,19 @@ export default function Feed() {
                 {Object.keys(checkins).map((key) =>
                 <div id='feedParts'>
 
-                    <a href='/'>Strain Name</a>
+                    <a href='/'>{strains[checkins.strainId]}</a>
                     <p>{checkins[key].text}</p>
 
-                    <button type='button'>Comment</button>
+                    <div className='feedButtons'>
+                        <button type='button'>Comment</button>
 
-                    {currentUser.id === checkins[key].userId ? (
-                        <div id='checkinButtons'>
-                            <button type='button'>Edit</button>
-                            <button type='button' onClick={deleteCheckin}>Delete</button>
-                        </div>
-                    ) : null}
-
+                        {currentUser.id === checkins[key].userId ? (
+                            <div id='checkinButtons'>
+                                <button type='button' id='editButton'>Edit</button>
+                                <button type='button' id='deleteButton' onClick={deleteCheckin}>Delete</button>
+                            </div>
+                        ) : null}
+                    </div>
                 </div>
                 )}
         </div>

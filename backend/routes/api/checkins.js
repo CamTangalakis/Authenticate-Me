@@ -15,4 +15,12 @@ router.get('/', asyncHandler(async(req, res)=> {
     res.json(checkins)
 }))
 
+router.delete('/', asyncHandler(async(req, res)=> {
+    const id = req.checkin
+    console.log(id, '<--------------')
+    const checkin = await Checkin.findByPk(id);
+    await checkin.destroy();
+    res.send("Checkin destroyed successfully!");
+}))
+
 module.exports = router;

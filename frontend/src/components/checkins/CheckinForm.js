@@ -9,7 +9,7 @@ const CheckinForm = () => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
     const [text, setText] = useState('')
-    const [userId, setUserId] = useState(0)
+    const [userId, setUserId] = useState(parseInt(sessionUser.id))
     const [strainId, setStrainId] = useState(0)
     // const [strains, setStrains] = useState()
     const strains = useSelector(state => state.strain)
@@ -18,7 +18,6 @@ const CheckinForm = () => {
 
     const onSubmit = async(e) => {
         e.preventDefault()
-        setUserId(sessionUser.id)
         return dispatch(checkinActions.postCheckin({ userId, strainId, text }));
     }
     console.log(strains, '<-------------------')
@@ -33,7 +32,7 @@ const CheckinForm = () => {
             <h2 id='checkinHeader'>Check In</h2>
             <label id='checkinField'>Choose a Strain:</label>
                 <select onChange={e=> setStrainId(e.target.value)}>
-                    {/* {Object.keys(strains).map((key)=> <option value={strains[key].id}>{strains[key].name} </option>)} */}
+                    {Object.keys(strains).map((key)=> <option value={strains[key].id}>{strains[key].name} </option>)}
                 </select>
             <label id='checkinField'>Comment:</label>
                 <input
