@@ -13,4 +13,7 @@
 
 .sideBar{
     display: flex;
+    flex-direction: column;
+    background-color:rgb(223, 243, 221);
+    height: fit-content;
 }

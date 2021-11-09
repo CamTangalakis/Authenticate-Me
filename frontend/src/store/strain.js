@@ -2,9 +2,10 @@ import {csrfFetch} from './csrf'
 
 const GET = 'strain/get'
 
-export const get = () => {
+export const get = (data) => {
     return {
-        type: GET
+        type: GET,
+        payload: data
     }
 }
 export const getStrain = () => async (dispatch) => {
@@ -14,7 +15,7 @@ export const getStrain = () => async (dispatch) => {
     return strain
 }
 
-const strainReducer = (state={user:'Demo-used'}, action) => {
+const strainReducer = (state={}, action) => {
     let newState
     switch(action.type){
         case GET:

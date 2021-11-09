@@ -11,7 +11,8 @@ const CheckinForm = () => {
     const [text, setText] = useState('')
     const [userId, setUserId] = useState(0)
     const [strainId, setStrainId] = useState(0)
-    const strains = useSelector(state => state)
+    // const [strains, setStrains] = useState()
+    const strains = useSelector(state => state.strain)
     // const checkin = useSelector(state => state.checkin)
     // console.log(checkin)
 
@@ -21,6 +22,7 @@ const CheckinForm = () => {
         return dispatch(checkinActions.postCheckin({ userId, strainId, text }));
     }
     console.log(strains, '<-------------------')
+    console.log(userId, strainId, text)
 
     useEffect(()=> {
         dispatch(strainActions.getStrain())

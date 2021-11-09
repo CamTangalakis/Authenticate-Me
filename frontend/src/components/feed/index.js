@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import * as sessionActions from '../../store/checkin';
+import * as checkinActions from '../../store/checkin';
 import './feed.css'
 
 export default function Feed() {
@@ -12,14 +12,14 @@ export default function Feed() {
     // console.log(checkins, strains, '<-----------------')
     // const [checkin, setCheckin] = useState()
 
-    // dispatch(sessionActions.getCheckin())
+    // dispatch(checkinActions.getCheckin())
 
     useEffect(()=> {
-        dispatch(sessionActions.getCheckin())
+        dispatch(checkinActions.getCheckin())
     }, [dispatch])
 
     function deleteCheckin () {
-        dispatch(sessionActions.delCheckin())
+        dispatch(checkinActions.delCheckin())
     }
 
     return (
@@ -30,6 +30,8 @@ export default function Feed() {
 
                     <a href='/'>Strain Name</a>
                     <p>{checkins[key].text}</p>
+
+                    <button type='button'>Comment</button>
 
                     {currentUser.id === checkins[key].userId ? (
                         <div id='checkinButtons'>
