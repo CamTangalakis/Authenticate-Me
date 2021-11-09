@@ -10,7 +10,7 @@ const CheckinForm = () => {
     const [text, setText] = useState('')
     const [userId, setUserId] = useState(0)
     const [strainId, setStrainId] = useState(0)
-    const strains = useSelector(state => state.strains)
+    const strains = useSelector(state => state)
     // const checkin = useSelector(state => state.checkin)
     // console.log(checkin)
 
@@ -29,7 +29,7 @@ const CheckinForm = () => {
         <form onSubmit={onSubmit}>
             <label>Choose a Strain:</label>
                 <select onChange={e=> setStrainId(e.target.value)}>
-                    {Object.keys(strains).map((key)=> <option value={strains[key].id}>{strains[key].name} </option>)}
+                    {/* {Object.keys(strains).map((key)=> <option value={strains[key].id}>{strains[key].name} </option>)} */}
                 </select>
             <label>Comment:</label>
                 <input
