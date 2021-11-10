@@ -86,7 +86,7 @@ const commentReducer = (state={user:'Demo-used'}, action) => {
             return newState;
         case DEL:
             newState = Object.assign({}, state);
-            newState.user = null;
+            delete newState[action.payload];
             return newState;
         default:
             return state
