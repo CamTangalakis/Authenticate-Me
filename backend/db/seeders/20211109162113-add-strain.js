@@ -9,6 +9,7 @@ module.exports = {
       Example:
       */
    return queryInterface.bulkInsert('Strains', [
+     {name: 'Blender', strain: 'hybrid', description: 'You\'ve never had weed like this! A unique blend of OG Kush and Girl Scout Cookies, this energizing blend will have you giggling until your neighbors call the cops on you.', createdAt: new Date(), updatedAt: new Date()},
      {name: 'Starry Nights', strain: 'indica', description: 'This trippy blend will have you seeing stars as it puts you to sleep. Super relaxing and mildly gassy, it will sing you off to a peaceful slumber.', createdAt: new Date(), updatedAt: new Date()},
      {name: 'OG Kush', strain: 'hybrid', description: 'OG Kush is a world famous blend popularized in Los Angeles for its heavy and euphoric high. It will leave you feelin relaxed, happy, and giggly, with strong earthy and citrus flavors.', createdAt: new Date(), updatedAt: new Date()},
      {name: 'Pineapple Express', strain: 'hybrid', description: 'The dopest dope. The perfect child of Trainwreck and Hawaiian will have you hopping the express train to a happy, uplifted high.', createdAt: new Date(), updatedAt: new Date()},
