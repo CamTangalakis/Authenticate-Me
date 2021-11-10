@@ -43,6 +43,17 @@ export const postCheckin = (content) => async (dispatch) => {
     return response
 }
 
+export const editCheckin = (content, id) => async (dispatch) => {
+    const {text} = content
+    const response = await csrfFetch(`/api/checkins/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({text})
+    })
+    const newPost = await response.json()
+    dispatch(edit(newPost))
+    return response
+}
+
 export const getCheckin = () => async (dispatch) => {
     const checkins = await csrfFetch('/api/checkins', {
 
@@ -52,11 +63,11 @@ export const getCheckin = () => async (dispatch) => {
     return checkins
 }
 
-export const delCheckin = () => async (dispatch) => {
-    const response = await csrfFetch('/api/checkins', {
+export const delCheckin = (id) => async (dispatch) => {
+    const response = await csrfFetch(`/api/checkins/${id}`, {
         method: 'DELETE'
     })
-    dispatch(del())
+    dispatch(del(id))
     return response
 }
 

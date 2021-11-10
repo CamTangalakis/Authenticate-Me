@@ -15,7 +15,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className='page'>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
       <div className='feed'>
@@ -27,7 +27,7 @@ function App() {
           //   </Route>
           // </Routes>
       )}
-    </>
+    </div>
   );
 }
 

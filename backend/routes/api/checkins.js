@@ -15,9 +15,17 @@ router.get('/', asyncHandler(async(req, res)=> {
     res.json(checkins)
 }))
 
-router.delete('/', asyncHandler(async(req, res)=> {
-    const id = req.checkin
-    console.log(id, '<--------------')
+router.put(`/:id`, asyncHandler(async(req, res)=> {
+    const {id} = req.params
+    const {text} = req.body
+    const checkin = await Checkin.findByPk(id);
+    await checkin.put({text})
+    res.send('Checkin edited!!!')
+}))
+
+router.delete(`/:id`, asyncHandler(async(req, res)=> {
+    const {id} = req.params
+    // console.log(id, '<--------------')
     const checkin = await Checkin.findByPk(id);
     await checkin.destroy();
     res.send("Checkin destroyed successfully!");

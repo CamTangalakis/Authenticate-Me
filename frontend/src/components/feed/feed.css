@@ -3,23 +3,34 @@
     flex-direction: column;
 }
 
-#feedParts{
-    background-color: rgb(223, 243, 221);
-    padding: 10px;
-    margin: 10px;
-    height: fit-content;
-    width: 90%;
-}
-
 .sideBar{
     display: flex;
     flex-direction: column;
     background-color:rgb(223, 243, 221);
     height: fit-content;
+    width: 20%;
+    margin-top: 10px;
+}
+
+#feedParts {
+    background-color: rgb(223, 243, 221);
+    padding: 10px;
+    margin: 10px;
+    height: auto;
+    width: 80%;
+}
+
+#checkinText {
+    border-bottom: 1px solid rgb(4, 68, 4);
+}
+
+.welcome {
+    font-size: 15px;
 }
 
 .feedButtons{
     display: flex;
+    margin-top: 10px;
 }
 
 #checkinButtons{

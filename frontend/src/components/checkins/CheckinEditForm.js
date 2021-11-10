@@ -5,12 +5,10 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import './checkin.css'
 
-const CheckinForm = () => {
+const CheckinForm = ({id}) => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
     const [text, setText] = useState('')
-    const [userId, setUserId] = useState(parseInt(sessionUser.id))
-    const [strainId, setStrainId] = useState(0)
     // const [strains, setStrains] = useState()
     const strains = useSelector(state => state.strain)
     // const checkin = useSelector(state => state.checkin)
@@ -18,27 +16,17 @@ const CheckinForm = () => {
 
     const onSubmit = async(e) => {
         e.preventDefault()
-        return dispatch(checkinActions.postCheckin({ userId, strainId, text }));
+        return dispatch(checkinActions.editCheckin({ text, id}));
     }
-    // console.log(strains, '<-------------------')
-    // console.log(userId, strainId, text)
-
-    useEffect(()=> {
-        dispatch(strainActions.getStrain())
-    }, [dispatch])
 
     return (
         <form onSubmit={onSubmit} className='checkinForm'>
             <h2 id='checkinHeader'>Check In</h2>
-            <label id='checkinField'>Choose a Strain:</label>
-                <select onChange={e=> setStrainId(e.target.value)}>
-                    {Object.keys(strains).map((key)=> <option value={strains[key].id}>{strains[key].name} </option>)}
-                </select>
             <label id='checkinField'>Comment:</label>
                 <input
                     id='checkinText'
                     type='textarea'
-                    placeholder='Say something...'
+                    placeholder={text}
                     value={text}
                     onChange={(e)=>setText(e.target.value)} />
             <button type='submit' id='checkInButton'>Submit</button>

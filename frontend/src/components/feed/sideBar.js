@@ -19,8 +19,8 @@ export default function Feed() {
     return (
         <div className='sideBar'>
             {sessionUser ?
-               <h1>Welcome, {sessionUser.username}!</h1> :
-               <h1>Welcome, user!</h1>}
+               <h1 className='welcome'>Welcome, {sessionUser.username}!</h1> :
+               <h1 className='welcome'>Welcome, user!</h1>}
 
         <h1>Strains</h1>
             <div>

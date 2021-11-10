@@ -29,7 +29,10 @@ function Navigation({ isLoaded }){
 
   return (
     <ul className='navBar'>
+      <div className='weedia'>
         <NavLink exact to="/" className='homeButton'>unTokd</NavLink>
+        <h3>the new social weedia</h3>
+      </div>
         {isLoaded && sessionLinks}
     </ul>
   );
