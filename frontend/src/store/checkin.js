@@ -26,9 +26,10 @@ export const edit = (content) => {
     }
 }
 
-export const del = () => {
+export const del = (id) => {
     return {
-        type: DEL
+        type: DEL,
+        payload: id
     }
 }
 
@@ -39,7 +40,8 @@ export const postCheckin = (content) => async (dispatch) => {
         body: JSON.stringify({userId, strainId, text})
     })
     const newPost = await response.json()
-    dispatch(checkin(newPost))
+    dispatch(checkin(newPost.checkin))
+    console.log(newPost)
     return response
 }
 
@@ -49,15 +51,13 @@ export const editCheckin = (content, id) => async (dispatch) => {
         method: 'PUT',
         body: JSON.stringify({text})
     })
-    const newPost = await response.json()
-    dispatch(edit(newPost))
+    const editPost = await response.json()
+    dispatch(edit(editPost))
     return response
 }
 
 export const getCheckin = () => async (dispatch) => {
-    const checkins = await csrfFetch('/api/checkins', {
-
-    })
+    const checkins = await csrfFetch('/api/checkins')
     const data = await checkins.json()
     dispatch(get(data))
     return checkins
@@ -76,7 +76,7 @@ const checkinReducer = (state={user:'Demo-used'}, action) => {
     switch(action.type){
         case CHECKIN:
             newState = Object.assign({}, state);
-            newState = action.payload;
+            newState[action.payload.id] = action.payload;
             return newState;
         case EDIT:
             newState = Object.assign({}, state);
@@ -84,11 +84,14 @@ const checkinReducer = (state={user:'Demo-used'}, action) => {
             return newState;
         case GET:
             newState = Object.assign({}, state);
-            newState = action.payload;
+            newState = action.payload.reduce((accumulator, element)=> {
+                accumulator[element.id] = element
+                return accumulator
+            }, {});
             return newState;
         case DEL:
             newState = Object.assign({}, state);
-            newState.user = null;
+            delete newState[action.payload];
             return newState;
         default:
             return state

@@ -1,33 +1,36 @@
 import React, { useState } from 'react';
 import * as checkinActions from '../../store/checkin';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './checkin.css'
 // import '../../context/Modal.css'
 
-const CheckinForm = ({id}) => {
+const CheckinEditForm = ({checkin}) => {
     const dispatch = useDispatch()
-    const [text, setText] = useState('')
-    const [strain, setStrain] = useState('kuuuush')
+    const [text, setText] = useState(checkin.text)
+    const [strainId, setStrainId] = useState(checkin.strainId)
+    const strains = useSelector(state => state.strain)
+    console.log(checkin, strainId, '<-------------')
 
     const onSubmit = async(e) => {
         e.preventDefault()
-        return dispatch(checkinActions.editCheckin({ text, id}));
+        const id = checkin.id
+        return dispatch(checkinActions.editCheckin({ text, id }));
     }
 
     return (
         <form onSubmit={onSubmit} className='checkinForm'>
             <h2 id='checkinHeader'>Check In</h2>
-            <h3>{strain}</h3>
+            <h3>{strains[strainId].name}</h3>
             <label id='checkinField'>Comment:</label>
                 <input
                     id='checkinText'
                     type='textarea'
-                    placeholder={text}
                     value={text}
-                    onChange={(e)=>setText(e.target.value)} />
+                    onChange={(e)=>setText(e.target.value)}
+                    />
             <button type='submit' id='checkInButton'>Submit</button>
         </form>
     )
 }
 
-export default CheckinForm
+export default CheckinEditForm

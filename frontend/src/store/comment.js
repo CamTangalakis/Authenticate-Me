@@ -49,11 +49,23 @@ export const getComment = () => async (dispatch) => {
     return comment
 }
 
-export const delComment = () => async (dispatch) => {
-    const response = await csrfFetch('/api/comments', {
+export const editComment = (content, id) => async (dispatch) => {
+    const {text} = content
+    const response = await csrfFetch(`/api/comments/${id}`, {
+        method: 'PUT',
+        body: {text}
+    })
+
+    const editCom = await response.json()
+    dispatch(edit(editCom))
+    return response
+}
+
+export const delComment = (id) => async (dispatch) => {
+    const response = await csrfFetch(`/api/comments/${id}`, {
         method: 'DELETE'
     })
-    dispatch(comment())
+    dispatch(del(id))
     return response
 }
 

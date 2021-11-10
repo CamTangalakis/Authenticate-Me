@@ -21,10 +21,10 @@ const CheckinForm = () => {
         e.preventDefault();
 
         return dispatch(checkinActions.postCheckin({ userId, strainId, text }))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-    })}
+            // .catch(async (res) => {
+            //     const data = await res.json();
+            //     if (data && data.errors) setErrors(data.errors);
+    }
     // console.log(strains, '<-------------------')
     // console.log(userId, strainId, text)
 

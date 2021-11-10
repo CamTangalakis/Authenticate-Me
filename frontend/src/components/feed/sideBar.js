@@ -3,14 +3,15 @@ import { useSelector } from "react-redux";
 // import './index.css'
 import * as strainActions from '../../store/strain'
 import { useDispatch } from "react-redux";
+import StrainsModal from "./sideBarModal";
 import './feed.css'
 
-export default function Feed() {
+export default function SideBar() {
     // const [checkins, setCheckins] = useState()
     const dispatch = useDispatch()
     const strains = useSelector(state => state.strain);
     const sessionUser = useSelector(state => state.session.user)
-    console.log(strains, '<------------')
+    // console.log(strains, '<------------')
 
     useEffect(()=> {
         dispatch(strainActions.getStrain())
@@ -24,12 +25,13 @@ export default function Feed() {
 
         <h1>Strains</h1>
             <div>
-                {Object.keys(strains).map((key)=> {
-                    (<div className='strainFeed'>
-                        <h2 className='strainList'>{strains[key]?.name}</h2>
-                        {/* <p>{strains[key].description}</p> */}
-                    </div>)
-                })}
+                {/* {strains.map(key => (
+                    <div className='strainFeed'>
+                        <h2 className='strainList'>{key.name}</h2>
+                        <p>{key.description}</p>
+                        <StrainsModal />
+                    </div>
+                ))} */}
             </div>
 
         </div>
