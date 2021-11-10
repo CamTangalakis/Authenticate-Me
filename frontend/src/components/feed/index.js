@@ -5,6 +5,7 @@ import * as commentActions from '../../store/comment'
 import { Modal } from '../../context/Modal';
 import CheckinEditForm from "../checkins/CheckinEditForm";
 import './feed.css'
+// import '../../context/Modal.css'
 
 export default function Feed() {
     const dispatch = useDispatch()
@@ -42,7 +43,7 @@ export default function Feed() {
                 <div className='feedButtons'>
                     <button type='button' onClick={() => setShowComments(!showComments)}>Comment</button>
 
-                    {currentUser.id === checkins[key]?.userId ? (
+                    {currentUser?.id === checkins[key]?.userId ? (
                         <div id={`checkinButtons`}>
                             {/* {setCheckinId(checkins[key].id)} */}
                             <button type='button' id='editButton' onClick={() => setShowModal(true)}>Edit</button>

@@ -15,7 +15,7 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <div id='checkinButton'>
         <CheckinFormModal id='formButton'/>
-        <ProfileButton user={sessionUser} />
+        <ProfileButton id='formButton' user={sessionUser} />
       </div>
     );
   } else {

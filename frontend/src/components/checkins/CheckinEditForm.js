@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import * as checkinActions from '../../store/checkin';
-import * as strainActions from '../../store/strain'
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
 import './checkin.css'
+// import '../../context/Modal.css'
 
 const CheckinForm = ({id}) => {
     const dispatch = useDispatch()
-    const sessionUser = useSelector(state => state.session.user);
     const [text, setText] = useState('')
-    // const [strains, setStrains] = useState()
-    const strains = useSelector(state => state.strain)
-    // const checkin = useSelector(state => state.checkin)
-    // console.log(checkin)
+    const [strain, setStrain] = useState('kuuuush')
 
     const onSubmit = async(e) => {
         e.preventDefault()
@@ -22,6 +17,7 @@ const CheckinForm = ({id}) => {
     return (
         <form onSubmit={onSubmit} className='checkinForm'>
             <h2 id='checkinHeader'>Check In</h2>
+            <h3>{strain}</h3>
             <label id='checkinField'>Comment:</label>
                 <input
                     id='checkinText'

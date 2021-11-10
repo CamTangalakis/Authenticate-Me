@@ -6,23 +6,31 @@
 .sideBar{
     display: flex;
     flex-direction: column;
-    background-color:rgb(223, 243, 221);
+    /* background-color:rgb(116, 184, 110); */
+    border: 1px solid green;
+    padding: 10px;
     height: fit-content;
     width: 20%;
     margin-top: 10px;
+    margin-right: 10px;
+}
+
+.strainList{
+    font-size: 15px;
 }
 
 #feedParts {
-    background-color: rgb(223, 243, 221);
+    /* background-color: rgb(223, 243, 221); */
     padding: 10px;
     margin: 10px;
     height: auto;
     width: 80%;
+    border-bottom: 1px solid green;
 }
 
-#checkinText {
-    border-bottom: 1px solid rgb(4, 68, 4);
-}
+/* #checkinText {
+    /* border-bottom: 1px solid rgb(4, 68, 4); */
+
 
 .welcome {
     font-size: 15px;

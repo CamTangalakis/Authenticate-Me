@@ -1,9 +1,23 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
 const { Checkin } = require('../../db/models');
 const router = express.Router();
 
-router.post('/', asyncHandler(async (req, res, next)=> {
+const validateCheckin = [
+    check('text')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage('Please provide a comment.'),
+    check('strainId')
+        .exists({checkFalsy: true})
+        .notEmpty()
+        .withMessage('Please pick a strain.'),
+    handleValidationErrors
+]
+
+router.post('/', validateCheckin, asyncHandler(async (req, res, next)=> {
     const {userId, strainId, text} = req.body
     const checkin = await Checkin.create({userId, strainId, text})
 
