@@ -15,8 +15,8 @@ export default function FullFeed({checkin}) {
     const [commentText, setCommentText] = useState('')
     const [showComments, setShowComments] = useState(false)
     const [showModal, setShowModal] = useState(false);
-    // const strainId = checkin.strainId
-    // const strain = strains[strainId]
+    const strainId = checkin?.strainId
+    const strain = strains[strainId]
 
     // console.log(checkin, strain, '<------------')
 
@@ -29,7 +29,7 @@ export default function FullFeed({checkin}) {
     return (
         <div id='feedParts'>
 
-            {/* <a href='/'>{strains.strainId.name}</a> */}
+            <a href='/'>{strain?.name}</a>
             <p id='checkinText'>{checkin?.text}</p>
             {/* <h1>{checkin.strainId}</h1> */}
 

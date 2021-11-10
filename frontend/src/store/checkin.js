@@ -41,7 +41,6 @@ export const postCheckin = (content) => async (dispatch) => {
     })
     const newPost = await response.json()
     dispatch(checkin(newPost.checkin))
-    // console.log(newPost)
     return response
 }
 
