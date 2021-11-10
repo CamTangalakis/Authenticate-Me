@@ -11,7 +11,7 @@ function CheckinFormModal() {
       <button id='formButton' onClick={() => setShowModal(true)}>Check In</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <CheckinForm />
+          <CheckinForm setShowModal={setShowModal}/>
         </Modal>
       )}
     </>

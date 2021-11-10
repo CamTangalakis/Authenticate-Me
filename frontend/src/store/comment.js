@@ -12,9 +12,10 @@ export const comment = (content) => {
     }
 }
 
-export const get = () => {
+export const get = (content) => {
     return {
-        type: GET
+        type: GET,
+        payload: content
     }
 }
 
@@ -25,9 +26,10 @@ export const edit = (content) => {
     }
 }
 
-export const del = () => {
+export const del = (id) => {
     return {
-        type: DEL
+        type: DEL,
+        payload: id
     }
 }
 
@@ -38,7 +40,7 @@ export const postComment = (content) => async (dispatch) => {
         body: JSON.stringify({userId, checkinId, comment})
     })
     const newPost = await response.json()
-    dispatch(comment(newPost))
+    dispatch(comment(newPost.comment))
     return response
 }
 
@@ -53,7 +55,7 @@ export const editComment = (content, id) => async (dispatch) => {
     const {text} = content
     const response = await csrfFetch(`/api/comments/${id}`, {
         method: 'PUT',
-        body: {text}
+        body: JSON.stringify({text})
     })
 
     const editCom = await response.json()
@@ -74,7 +76,7 @@ const commentReducer = (state={user:'Demo-used'}, action) => {
     switch(action.type){
         case COMMENT:
             newState = Object.assign({}, state);
-            newState = action.payload;
+            newState[action.payload.id] = action.payload;
             return newState;
         case EDIT:
             newState = Object.assign({}, state);

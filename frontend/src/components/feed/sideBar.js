@@ -9,9 +9,9 @@ import './feed.css'
 export default function SideBar() {
     // const [checkins, setCheckins] = useState()
     const dispatch = useDispatch()
-    const strains = useSelector(state => state.strain);
-    const sessionUser = useSelector(state => state.session.user)
-    // console.log(strains, '<------------')
+    const strains = useSelector((state) => state.strain);
+    const sessionUser = useSelector((state) => state.session.user)
+    console.log(strains, '<------------')
 
     useEffect(()=> {
         dispatch(strainActions.getStrain())
@@ -25,13 +25,13 @@ export default function SideBar() {
 
         <h1>Strains</h1>
             <div>
-                {/* {strains.map(key => (
+                {strains?.map(key => (
                     <div className='strainFeed'>
                         <h2 className='strainList'>{key.name}</h2>
-                        <p>{key.description}</p>
+                        {/* <p>{key.description}</p> */}
                         <StrainsModal />
                     </div>
-                ))} */}
+                ))}
             </div>
 
         </div>

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import './checkin.css'
 
-const CheckinForm = () => {
+const CheckinForm = ({setShowModal}) => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
     const [text, setText] = useState('')
@@ -20,10 +20,11 @@ const CheckinForm = () => {
     const onSubmit = async(e) => {
         e.preventDefault();
 
-        return dispatch(checkinActions.postCheckin({ userId, strainId, text }))
-            // .catch(async (res) => {
-            //     const data = await res.json();
-            //     if (data && data.errors) setErrors(data.errors);
+        await dispatch(checkinActions.postCheckin({ userId, strainId, text }))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);})
+        setShowModal(false)
     }
     // console.log(strains, '<-------------------')
     // console.log(userId, strainId, text)

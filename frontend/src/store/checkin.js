@@ -12,16 +12,16 @@ export const checkin = (content) => {
     }
 }
 
-export const get = (content) => {
+export const edit = (content) => {
     return {
-        type: GET,
+        type: EDIT,
         payload: content
     }
 }
 
-export const edit = (content) => {
+export const get = (content) => {
     return {
-        type: EDIT,
+        type: GET,
         payload: content
     }
 }
@@ -41,18 +41,7 @@ export const postCheckin = (content) => async (dispatch) => {
     })
     const newPost = await response.json()
     dispatch(checkin(newPost.checkin))
-    console.log(newPost)
-    return response
-}
-
-export const editCheckin = (content, id) => async (dispatch) => {
-    const {text} = content
-    const response = await csrfFetch(`/api/checkins/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify({text})
-    })
-    const editPost = await response.json()
-    dispatch(edit(editPost))
+    // console.log(newPost)
     return response
 }
 
@@ -71,7 +60,19 @@ export const delCheckin = (id) => async (dispatch) => {
     return response
 }
 
-const checkinReducer = (state={user:'Demo-used'}, action) => {
+export const editCheckin = (content, id) => async (dispatch) => {
+    const text = content
+    const response = await csrfFetch(`/api/checkins/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({text})
+    })
+    const editPost = await response.json()
+    // console.log(editPost, '<---------')
+    dispatch(edit(editPost))
+    return response
+}
+
+const checkinReducer = (state={user:null}, action) => {
     let newState
     switch(action.type){
         case CHECKIN:
@@ -80,7 +81,7 @@ const checkinReducer = (state={user:'Demo-used'}, action) => {
             return newState;
         case EDIT:
             newState = Object.assign({}, state);
-            newState = action.payload;
+            newState[action.payload.id] = action.payload;
             return newState;
         case GET:
             newState = Object.assign({}, state);

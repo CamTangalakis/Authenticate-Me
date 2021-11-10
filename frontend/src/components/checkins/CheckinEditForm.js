@@ -4,17 +4,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import './checkin.css'
 // import '../../context/Modal.css'
 
-const CheckinEditForm = ({checkin}) => {
+const CheckinEditForm = ({checkin, setShowModal}) => {
     const dispatch = useDispatch()
     const [text, setText] = useState(checkin.text)
     const [strainId, setStrainId] = useState(checkin.strainId)
     const strains = useSelector(state => state.strain)
-    console.log(checkin, strainId, '<-------------')
+    // console.log(checkin.id, text, '<-------------')
 
     const onSubmit = async(e) => {
         e.preventDefault()
         const id = checkin.id
-        return dispatch(checkinActions.editCheckin({ text, id }));
+        await dispatch(checkinActions.editCheckin( text, id ));
+        setShowModal(false)
     }
 
     return (

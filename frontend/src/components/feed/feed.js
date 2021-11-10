@@ -10,15 +10,15 @@ export default function FullFeed({checkin}) {
     const dispatch = useDispatch()
     const currentUser = useSelector((state) => state.session.user)
     const comments = useSelector((state)=> state.comment)
-    const strains = useSelector(state => state.strain)
+    const strains = useSelector((state) => state.strain)
 
     const [commentText, setCommentText] = useState('')
     const [showComments, setShowComments] = useState(false)
     const [showModal, setShowModal] = useState(false);
-    const strainId = checkin.strainId
-    const strain = strains[strainId]
+    // const strainId = checkin.strainId
+    // const strain = strains[strainId]
 
-    console.log(checkin, strain, '<------------')
+    // console.log(checkin, strain, '<------------')
 
     const submitComment = async (e) => {
         const userId = currentUser.id
@@ -30,19 +30,19 @@ export default function FullFeed({checkin}) {
         <div id='feedParts'>
 
             {/* <a href='/'>{strains.strainId.name}</a> */}
-            <p id='checkinText'>{checkin.text}</p>
+            <p id='checkinText'>{checkin?.text}</p>
             {/* <h1>{checkin.strainId}</h1> */}
 
             <div className='feedButtons'>
                 <button type='button' onClick={() => setShowComments(!showComments)}>Comment</button>
 
-                {currentUser?.id === checkin.userId ? (
+                {currentUser?.id === checkin?.userId ? (
                     <div id={`checkinButtons`}>
                         {/* {setCheckinId(checkin.id)} */}
                         <button type='button' id='editButton' onClick={() => setShowModal(true)}>Edit</button>
                             {showModal && (
                                 <Modal onClose={() => setShowModal(false)}>
-                                    <CheckinEditForm checkin={checkin}/>
+                                    <CheckinEditForm checkin={checkin} setShowModal={setShowModal}/>
                                 </Modal>
                             )}
 

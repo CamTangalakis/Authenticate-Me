@@ -20,8 +20,8 @@ router.put('/:id', asyncHandler(async(req, res)=> {
     const {commentBody} = req.body
 
     const comment = await Comment.findByPk(id)
-    //update comment
-    res.send('Comment edited!')
+    await comment.update(commentBody)
+    res.json({message: 'Comment edited!'})
 }))
 
 router.delete('/:id', asyncHandler(async(req, res)=> {

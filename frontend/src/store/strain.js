@@ -15,7 +15,7 @@ export const getStrain = () => async (dispatch) => {
     return strain
 }
 
-const strainReducer = (state={strain:null}, action) => {
+const strainReducer = (state=[], action) => {
     let newState
     switch(action.type){
         case GET:

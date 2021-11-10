@@ -32,14 +32,15 @@ router.get('/', asyncHandler(async(req, res)=> {
 router.put(`/:id`, asyncHandler(async(req, res)=> {
     const {id} = req.params
     const {text} = req.body
+    console.log(text)
     const checkin = await Checkin.findByPk(id);
-    await checkin.put({text})
-    res.send('Checkin edited!!!')
+    await checkin.update({text})
+
+    res.json(checkin)
 }))
 
 router.delete(`/:id`, asyncHandler(async(req, res)=> {
     const {id} = req.params
-    // console.log(id, '<--------------')
     const checkin = await Checkin.findByPk(id);
     await checkin.destroy();
     res.send("Checkin destroyed successfully!");
