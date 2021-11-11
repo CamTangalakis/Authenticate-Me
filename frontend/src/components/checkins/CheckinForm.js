@@ -43,7 +43,7 @@ const CheckinForm = ({setShowModal}) => {
             <h2 id='checkinHeader'>Check In</h2>
 
             <label id='checkinField'>Choose a Strain:</label>
-                <select onChange={e=> setStrainId(e.target.value)}>
+                <select onChange={e=> setStrainId(e.target.value - 1)}>
                     <option selected='selected' value={null}>Select...</option>
                     {Object.keys(strains).map((key)=> <option value={strains[key].id}>{strains[key].name} </option>)}
                 </select>

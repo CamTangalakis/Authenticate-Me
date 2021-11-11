@@ -5,6 +5,7 @@ import * as commentActions from '../../store/comment'
 import { Modal } from '../../context/Modal';
 import CheckinEditForm from "../checkins/CheckinEditForm";
 import CommentsFeed from "./Comments";
+import SplashPage from "../splashPage/splashPage";
 import './feed.css'
 
 export default function FullFeed({checkin}) {
@@ -16,10 +17,9 @@ export default function FullFeed({checkin}) {
     const [commentText, setCommentText] = useState('')
     const [showComments, setShowComments] = useState(false)
     const [showEditModal, setShowEditModal] = useState(false);
+    const [showSplash, setShowSplash] = useState(true)
     const strainId = checkin?.strainId
     const strain = strains[strainId]
-
-    // console.log(checkin, strain, '<------------')
 
     const submitComment = async (e) => {
         const userId = currentUser.id
@@ -29,6 +29,12 @@ export default function FullFeed({checkin}) {
 
     return (
         <div id='feedParts'>
+            {/* <SplashModal showSplash={showSplash} setShowSplash={setShowSplash}/> */}
+            {/* {showSplash && (
+                <Modal onClose={() => setShowSplash(false)}>
+                    <SplashPage />
+                </Modal>
+            )} */}
 
             <h3>{strain?.name}</h3>
             <p id='checkinText'>{checkin?.text}</p>

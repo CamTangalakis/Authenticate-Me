@@ -1,0 +1,8 @@
+.splashPage{
+    background-color: rgb(69, 151, 69);
+    padding: 20px;
+}
+ .splashButtonContainer{
+     display: flex;
+     justify-content: right;
+ }
