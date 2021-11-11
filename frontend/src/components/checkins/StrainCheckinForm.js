@@ -4,24 +4,32 @@ import { useDispatch, useSelector } from 'react-redux';
 import './checkin.css'
 // import '../../context/Modal.css'
 
-const CheckinEditForm = ({checkin, setShowModal}) => {
+const StrainCheckinForm = ({setShowModal, strain}) => {
     const dispatch = useDispatch()
-    const [text, setText] = useState(checkin?.text)
-    const [strainId, setStrainId] = useState(checkin?.strainId)
-    const strains = useSelector(state => state?.strain)
-    // console.log(checkin.id, text, '<-------------')
+    const [text, setText] = useState('')
+    const [errors, setErrors] = useState([])
+    const sessionUserId = useSelector(state=> state.session.user.id)
 
     const onSubmit = async(e) => {
         e.preventDefault()
-        const id = checkin.id
-        await dispatch(checkinActions.editCheckin( text, id ));
-        setShowModal(false)
+
+        if(!text) setErrors('Please provide a comment.')
+        else {
+            await dispatch(checkinActions.postCheckin({userId: sessionUserId, strainId: strain.id - 1, text}))
+            setShowModal(false)
+        }
     }
 
     return (
         <form onSubmit={onSubmit} className='checkinForm'>
             <h2 id='checkinHeader'>Check In</h2>
-            <h3>{strains[strainId]?.name}</h3>
+            <h3>{strain.name}</h3>
+
+            {errors ?
+                <ul>
+                    <li>{errors}</li>
+                </ul> : null}
+
             <label id='checkinField'>Comment:</label>
                 <input
                     id='checkinText'
@@ -34,4 +42,4 @@ const CheckinEditForm = ({checkin, setShowModal}) => {
     )
 }
 
-export default CheckinEditForm
+export default StrainCheckinForm

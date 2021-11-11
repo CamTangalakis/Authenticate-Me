@@ -46,7 +46,7 @@ export default function FullFeed({checkin}) {
                                 </Modal>
                             )}
 
-                        <button type='button' id={`deleteButton ${checkin.id}`} onClick={() => {
+                        <button type='button' id={`deleteButton ${checkin?.id}`} onClick={() => {
                             return dispatch(checkinActions.delCheckin(checkin.id))
                         }} >Delete</button>
                     </div>

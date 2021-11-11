@@ -8,23 +8,27 @@ import './checkin.css'
 const CheckinForm = ({setShowModal}) => {
     const dispatch = useDispatch()
     const [text, setText] = useState('')
-    const [strainId, setStrainId] = useState(0)
+    const [strainId, setStrainId] = useState()
     const [errors, setErrors] = useState([])
 
     const sessionUser = useSelector(state => state.session.user);
     const strains = useSelector(state => state.strain)
-    const [userId] = useState(parseInt(sessionUser.id))
+    const [userId] = useState(parseInt(sessionUser?.id))
 
     const onSubmit = async(e) => {
         e.preventDefault();
 
-        await dispatch(checkinActions.postCheckin({ userId, strainId, text }))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-            })
-
-        setShowModal(false)
+        if(text && strainId) {
+            await dispatch(checkinActions.postCheckin({ userId, strainId, text }))
+                .catch(async (res) => {
+                    const data = await res.json();
+                    if (data && data.errors) setErrors(data.errors);
+                })
+            setShowModal(false)
+        } else {
+            if(!text && !errors.includes('Please provide a comment.')) setErrors([...errors, 'Please provide a comment.'])
+            if(!strainId && !errors.includes('Please provide a strain.')) setErrors([...errors, 'Please provide a strain.'])
+        }
     }
 
     useEffect(()=> {

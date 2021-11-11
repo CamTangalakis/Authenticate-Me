@@ -24,10 +24,10 @@ export default function SideBar() {
 
         <h1>Strains</h1>
             <div>
-                {strains?.map(key => (
+                {strains?.map(strain => (
                     <div className='strainFeed'>
-                        <h2 className='strainList'>{key.name}</h2>
-                        <StrainsModal />
+                        {/* <h2 className='strainList'>{strain.name}</h2> */}
+                        <StrainsModal strain={strain}/>
                     </div>
                 ))}
             </div>
