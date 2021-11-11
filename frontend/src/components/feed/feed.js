@@ -67,10 +67,10 @@ export default function FullFeed({checkin}) {
                     {/* {comments.checkinId === checkin.id ? (
                         <p>{comments.commentBody}</p>
                     ) : null} */}
+                    <CommentsFeed checkinId={checkin?.id}/>
                 </div>
             )}
 
-            <CommentsFeed checkinId={checkin?.id}/>
         </div>
     )
 }

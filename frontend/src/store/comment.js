@@ -47,6 +47,7 @@ export const postComment = (content) => async (dispatch) => {
 export const getComment = () => async (dispatch) => {
     const comment = await csrfFetch('/api/comments')
     const data = await comment.json()
+    console.log(data, '!!!!!!!!!!!!!!!!!!!!!')
     dispatch(get(data))
     return comment
 }
@@ -71,7 +72,7 @@ export const delComment = (id) => async (dispatch) => {
     return response
 }
 
-const commentReducer = (state={user:'Demo-used'}, action) => {
+const commentReducer = (state={user:null}, action) => {
     let newState
     switch(action.type){
         case COMMENT:
@@ -84,7 +85,10 @@ const commentReducer = (state={user:'Demo-used'}, action) => {
             return newState;
         case GET:
             newState = Object.assign({}, state);
-            newState = action.payload;
+            newState = action.payload.reduce((accumulator, element)=> {
+                accumulator[element.id] = element
+                return accumulator
+            }, {});
             return newState;
         case DEL:
             newState = Object.assign({}, state);

@@ -1,34 +1,34 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
-const { Comment } = require('../../db/models');
+const { Comment, User, Checkin } = require('../../db/models');
 const router = express.Router();
 
 router.post('/', asyncHandler(async (req, res, next)=> {
     const {userId, checkinId, commentBody} = req.body
-    const comment = await Comment.create({userId, checkinId, commentBody})
+    const comment = await Comment.newComment({userId, checkinId, commentBody}, User)
 
     return res.json({comment})
 }))
 
-router.get('/', asyncHandler(async(req, res)=> {
-    let comment = Comment.findAll()
+router.get('/:checkinId', asyncHandler(async(req, res)=> {
+    const checkinId = +req.params.checkinId
+    let comment = Comment.checkinComments(User, checkinId)
     res.json(comment)
 }))
 
-router.put('/:id', asyncHandler(async(req, res)=> {
+router.put('/:checkinid', asyncHandler(async(req, res)=> {
     const {id} = req.params
     const {commentBody} = req.body
 
-    const comment = await Comment.findByPk(id)
-    await comment.update(commentBody)
-    res.json({message: 'Comment edited!'})
+    const comment = await Comment.update(commentBody, id)
+    // await comment.update(commentBody)
+    res.json(comment)
 }))
 
-router.delete('/:id', asyncHandler(async(req, res)=> {
+router.delete('/:checkinid', asyncHandler(async(req, res)=> {
     const {id} = req.params
-    const comment = await Comment.findByPk(id)
-    await comment.destroy();
-    res.send('Comment deleted!')
+    const comment = await Comment.delete(id)
+    res.send(comment)
 }))
 
 module.exports = router;
