@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import * as checkinActions from '../../store/checkin';
 import { useDispatch, useSelector } from 'react-redux';
 import './checkin.css'
-// import '../../context/Modal.css'
 
 const StrainCheckinForm = ({setShowModal, strain}) => {
     const dispatch = useDispatch()
@@ -15,6 +14,7 @@ const StrainCheckinForm = ({setShowModal, strain}) => {
 
         if(!text) setErrors('Please provide a comment.')
         else {
+            setErrors([])
             await dispatch(checkinActions.postCheckin({userId: sessionUserId, strainId: strain.id - 1, text}))
             setShowModal(false)
         }
@@ -25,10 +25,7 @@ const StrainCheckinForm = ({setShowModal, strain}) => {
             <h2 id='checkinHeader'>Check In</h2>
             <h3>{strain.name}</h3>
 
-            {errors ?
-                <ul>
-                    <li>{errors}</li>
-                </ul> : null}
+            {errors ? <p>{errors}</p> : null}
 
             <label id='checkinField'>Comment:</label>
                 <input

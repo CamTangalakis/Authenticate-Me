@@ -21,12 +21,7 @@ function App() {
       <div className='feed'>
         <Feed className='feedItems'/>
         <SideBar className='sideBar'/>
-      </div>
-          // <Routes>
-          //   <Route exact path="/">
-          //   </Route>
-          // </Routes>
-      )}
+      </div> )}
     </div>
   );
 }

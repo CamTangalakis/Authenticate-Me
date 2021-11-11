@@ -20,6 +20,8 @@
     color: rgb(219, 223, 209);
     height: fit-content;
     margin-right: 10px;
+    border: none;
+    border-radius: 5px;
 }
 
 .homeButton:hover{
@@ -33,6 +35,10 @@
     right: 10px;
     top: 30px;
     padding: 10px;
+}
+
+#strainButtons{
+    width: 100%;
 }
 
 
@@ -56,20 +62,29 @@
     color: rgb(219, 223, 209);
     border: none;
     font-size: 15px;
+    border: none;
+    border-radius: 5px;
 }
 
 .profile-dropdown{
     display: flex;
-    background-color: lightgrey;
+    color: rgb(9, 94, 47);
+    background-color: rgb(219, 223, 209);
     flex-direction: column;
     position: absolute;
     padding: 10px 20px;
     right: 15px;
     top: 65px;
     list-style: none;
+    border-radius: 5px;
 }
 
 #logoutButton {
     margin-top: 5px;
-    margin-left: -3px;
+    margin-left: 25px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(9, 94, 47);
+    color: rgb(219, 223, 209);
 }

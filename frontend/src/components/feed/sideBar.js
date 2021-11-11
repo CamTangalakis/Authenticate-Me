@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 // import './index.css'
 import * as strainActions from '../../store/strain'
 import { useDispatch } from "react-redux";
-import StrainsModal from "./sideBarModal";
+import StrainsModal from "./StrainsModal";
 import './feed.css'
 
 export default function SideBar() {

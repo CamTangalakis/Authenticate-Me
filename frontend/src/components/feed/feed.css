@@ -7,7 +7,8 @@
     display: flex;
     flex-direction: column;
     /* background-color:rgb(116, 184, 110); */
-    border: 1px solid green;
+    border: 1px solid rgb(9, 94, 47);
+    border-radius: 5px;
     padding: 10px;
     height: fit-content;
     width: 20%;
@@ -48,4 +49,22 @@
 
 #deleteButton, #editButton{
     margin: 0px 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+#strainButtons{
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+    font-size: 15px;
+    color: rgb(219, 223, 209);
+    background-color: rgb(9, 94, 47);
+    border: none;
+    border-radius: 5px;
+}
+
+.strainDescriptionContainer{
+    border-radius: 5px;
+    background-color: rgb(219, 223, 209);
 }
