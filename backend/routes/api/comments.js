@@ -4,19 +4,19 @@ const { Comment, User, Checkin } = require('../../db/models');
 const router = express.Router();
 
 router.post('/', asyncHandler(async (req, res, next)=> {
-    const {userId, checkinId, commentBody} = req.body
-    const comment = await Comment.newComment({userId, checkinId, commentBody}, User)
+    const {userId, checkinId, comment} = req.body
+    const comm = await Comment.newComment({userId, checkinId, comment})
 
-    return res.json({comment})
+    return res.json({comm})
 }))
 
-router.get('/:checkinId', asyncHandler(async(req, res)=> {
-    const checkinId = +req.params.checkinId
-    let comment = Comment.checkinComments(User, checkinId)
+router.get('/', asyncHandler(async(req, res)=> {
+    // const checkinId = +req.params.checkinId
+    let comment = Comment.checkinComments()
     res.json(comment)
 }))
 
-router.put('/:checkinid', asyncHandler(async(req, res)=> {
+router.put('/:id', asyncHandler(async(req, res)=> {
     const {id} = req.params
     const {commentBody} = req.body
 
@@ -25,7 +25,7 @@ router.put('/:checkinid', asyncHandler(async(req, res)=> {
     res.json(comment)
 }))
 
-router.delete('/:checkinid', asyncHandler(async(req, res)=> {
+router.delete('/:id', asyncHandler(async(req, res)=> {
     const {id} = req.params
     const comment = await Comment.delete(id)
     res.send(comment)

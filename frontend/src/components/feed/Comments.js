@@ -1,21 +1,40 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
+import { Modal } from '../../context/Modal'
+import CommentEditForm from './CommentEditModal'
 import * as commentActions from '../../store/comment'
 
-export default function CommentsFeed ({checkinId}) {
-    const comments = useSelector(state=> state.comment)
-    // const comments = ['test1', 'test2', 'test3']
-    console.log(comments, '<----------')
+export default function CommentsFeed ({checkin}) {
+    const dispatch = useDispatch()
+    const comment = checkin.Comments
+    const sessionUserId = useSelector(state => state.session.user.id)
+    const [text, setText] = useState()
+    const [showEditModal, setShowEditModal] = useState(false)
+    // console.log(checkin, comment, '<----------')
 
-    const comment = commentActions.getComment()
-    console.log(comment, '!!!!!!!!!!!!!!!!!!')
+    async function deleteComment(id){
+        await dispatch(commentActions.delComment(id))
+    }
 
     return (
         <>
-            {/* <p>comments</p> */}
-            {/* // {comments.checkinI=== } */}
-            {/* {comments.map(comment=>
-                (<p>{comment}</p>)
-            )} */}
+        {comment.reverse().map(comm=> (
+            <>
+                <p>{comm.comment}</p>
+                {sessionUserId === comm.userId ? (
+                    <div>
+                        <button type='button' onClick={setShowEditModal(true)}>Edit</button>
+                            {showEditModal && (
+                                <Modal onClose={() => setShowEditModal(false)}>
+                                    <CommentEditForm content={comm.comment}/>
+                                </Modal>
+                            )}
+                        <button type='button' onClick={deleteComment(comm.id)}>Delete</button>
+                    </div>
+                    ) : null }
+            </>
+        ))}
+
         </>
     )
 }

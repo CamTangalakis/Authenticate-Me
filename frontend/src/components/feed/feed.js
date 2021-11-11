@@ -10,39 +10,37 @@ import './feed.css'
 
 export default function FullFeed({checkin}) {
     const dispatch = useDispatch()
-    const currentUser = useSelector((state) => state.session.user)
-    const comments = useSelector((state)=> state.comment)
+    const currentUserId = useSelector((state) => state.session.user.id)
     const strains = useSelector((state) => state.strain)
 
-    const [commentText, setCommentText] = useState('')
+    const [commentBody, setCommentBody] = useState('')
     const [showComments, setShowComments] = useState(false)
     const [showEditModal, setShowEditModal] = useState(false);
-    const [showSplash, setShowSplash] = useState(true)
     const strainId = checkin?.strainId
     const strain = strains[strainId]
 
+    console.log(commentBody, '<--------------')
+
     const submitComment = async (e) => {
-        const userId = currentUser.id
+        e.preventDefault()
+
+        const userId = currentUserId
         const checkinId = checkin.id
-        return dispatch(commentActions.postComment({userId, checkinId, commentText}))
+        // console.log(userId, checkinId, commentBody)
+        if(commentBody){
+            await dispatch(commentActions.postComment({userId, checkinId, comment: commentBody}))
+        }
     }
 
     return (
         <div id='feedParts'>
-            {/* <SplashModal showSplash={showSplash} setShowSplash={setShowSplash}/> */}
-            {/* {showSplash && (
-                <Modal onClose={() => setShowSplash(false)}>
-                    <SplashPage />
-                </Modal>
-            )} */}
-
             <h3>{strain?.name}</h3>
             <p id='checkinText'>{checkin?.text}</p>
 
             <div className='feedButtons'>
                 <button type='button' onClick={() => setShowComments(!showComments)}>Comment</button>
 
-                {currentUser?.id === checkin?.userId ? (
+                {currentUserId === checkin?.userId ? (
                     <div id={`checkinButtons`}>
                         {/* {setCheckinId(checkin.id)} */}
                         <button type='button' id='editButton' onClick={() => setShowEditModal(true)}>Edit</button>
@@ -61,13 +59,14 @@ export default function FullFeed({checkin}) {
 
             {showComments && (
                 <div className='comments'>
-                    <input type='text' onSubmit={submitComment} onChange={(e)=>setCommentText(e.target.value)}placeholder='Add a comment...'></input>
-                    {/* onChange={setCheckinId(checkin.id)} */}
+                    <form onSubmit={submitComment}>
+                    <input type='text'
+                        onChange={(e)=>setCommentBody(e.target.value)}
+                        placeholder='Add a comment...' />
                         <button type='submit'>Submit</button>
-                    {/* {comments.checkinId === checkin.id ? (
-                        <p>{comments.commentBody}</p>
-                    ) : null} */}
-                    <CommentsFeed checkinId={checkin?.id}/>
+                    </form>
+
+                    <CommentsFeed checkin={checkin}/>
                 </div>
             )}
 
