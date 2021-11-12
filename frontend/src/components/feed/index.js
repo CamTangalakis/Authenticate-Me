@@ -7,7 +7,7 @@ import './feed.css'
 
 export default function Feed() {
     const dispatch = useDispatch()
-    const checkins = useSelector((state) => state.checkin)
+    const checkins = useSelector((state) => ({...state.checkin}))
 
     // console.log(comments, '<-----------------')
     // console.log(checkins, strains, '<-----------------')
