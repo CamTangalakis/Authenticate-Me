@@ -1,14 +1,15 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import CommentEditModal from './commentModal'
 import * as commentActions from '../../store/comment'
 
 export default function CommentsFeed ({checkin}) {
+    const dispatch = useDispatch()
     const userId = useSelector(state=>state.session.user.id)
     const comments = checkin.Comments
     // console.log(checkin.Comments)
-    const deleteComment = async() => {
-
-    }
+    // const deleteComment = async() => {
+    //     await dispatch(commentActions.delComment())
+    // }
 
     return (
         <>
@@ -20,7 +21,9 @@ export default function CommentsFeed ({checkin}) {
                     <div>
                         {/* <button type='button'>Edit</button> */}
                         <CommentEditModal comment={comment}/>
-                        <button type='button' onClick={deleteComment}>Delete</button>
+                        <button type='button' onClick={()=> {
+                            return dispatch(commentActions.delComment(comment.id))
+                        }}>Delete</button>
                     </div>
                 {/* ) : null} */}
             </div>

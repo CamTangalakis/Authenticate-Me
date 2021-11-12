@@ -16,7 +16,7 @@ router.get('/:checkinId', asyncHandler(async(req, res)=> {
     res.json(comment)
 }))
 
-router.put('/:checkinid', asyncHandler(async(req, res)=> {
+router.put('/:id', asyncHandler(async(req, res)=> {
     const {id} = req.params
     const {commentBody} = req.body
 
@@ -25,10 +25,11 @@ router.put('/:checkinid', asyncHandler(async(req, res)=> {
     res.json(comment)
 }))
 
-router.delete('/:checkinid', asyncHandler(async(req, res)=> {
+router.delete('/:id', asyncHandler(async(req, res)=> {
     const {id} = req.params
-    const comment = await Comment.delete(id)
-    res.send(comment)
+    const comment = await Comment.findByPk(id);
+    await comment.destroy();
+    res.json({message: "Comment destroyed successfully!"});
 }))
 
 module.exports = router;

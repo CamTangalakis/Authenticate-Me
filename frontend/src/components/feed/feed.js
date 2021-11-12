@@ -56,6 +56,7 @@ export default function FullFeed({checkin}) {
                     <form onSubmit={submitComment}>
                         <input type='hidden' />
                         <input type='text'
+                            value={commentText}
                             onChange={(e)=>setCommentText(e.target.value)}
                             placeholder='Add a comment...' />
                             <button type='submit'>Submit</button>
