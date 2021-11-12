@@ -4,8 +4,8 @@ import * as commentActions from '../../store/comment'
 
 export default function CommentEditForm (content) {
     const dispatch = useDispatch()
-    const [text, setText] = useState(content)
-    console.log(text, '<-----------')
+    const [commentText, setCommentText] = useState(content)
+    console.log(commentText, '<-----------')
 
     const onSubmit = async (e) => {
         await dispatch(commentActions.editComment())
@@ -16,8 +16,8 @@ export default function CommentEditForm (content) {
             <h2>Edit comment</h2>
             <input
                 type='textarea'
-                value={text}
-                onChange={(e)=>setText(e.target.value)}
+                value={commentText}
+                onChange={(e)=>setCommentText(e.target.value)}
             ></input>
         </form>
     )

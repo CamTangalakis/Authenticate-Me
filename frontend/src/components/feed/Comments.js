@@ -10,7 +10,7 @@ export default function CommentsFeed ({checkin}) {
     const sessionUserId = useSelector(state => state.session.user.id)
 
     // const [text, setText] = useState()
-    const [showEditModal, setShowEditModal] = useState(false)
+    const [showCommentEditModal, setShowCommentEditModal] = useState(false)
     // console.log(checkin, comment, '<----------')
 
     // async function deleteComment(id){
@@ -25,9 +25,9 @@ export default function CommentsFeed ({checkin}) {
                 <p>{comm.comment}</p>
                 {sessionUserId === comm.userId ? (
                     <div>
-                        <button type='button' onClick={setShowEditModal(true)}>Edit</button>
-                            {showEditModal && (
-                                <Modal onClose={() => setShowEditModal(false)}>
+                        <button type='button' onClick={setShowCommentEditModal(true)}>Edit</button>
+                            {showCommentEditModal && (
+                                <Modal onClose={() => setShowCommentEditModal(false)}>
                                     <CommentEditForm content={comm.comment}/>
                                 </Modal>
                             )}
