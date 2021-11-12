@@ -7,7 +7,7 @@ import './checkin.css'
 const CheckinEditForm = ({checkin, setShowModal}) => {
     const dispatch = useDispatch()
     const [text, setText] = useState(checkin?.text)
-    const [strainId, setStrainId] = useState(checkin?.strainId)
+    const [strainId] = useState(checkin?.strainId)
     const strains = useSelector(state => state?.strain)
     // console.log(checkin.id, text, '<-------------')
 

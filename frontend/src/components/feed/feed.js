@@ -1,17 +1,15 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import * as checkinActions from '../../store/checkin';
 import * as commentActions from '../../store/comment'
 import { Modal } from '../../context/Modal';
 import CheckinEditForm from "../checkins/CheckinEditForm";
-import CommentsFeed from "./Comments";
-import SplashPage from "../splashPage/splashPage";
+import CommentsFeed from "../comments/Comments";
 import './feed.css'
 
 export default function FullFeed({checkin}) {
     const dispatch = useDispatch()
     const currentUser = useSelector((state) => state.session.user)
-    const comments = useSelector((state)=> state.comment)
     const strains = useSelector((state) => state.strain)
 
     const [commentText, setCommentText] = useState('')
@@ -21,9 +19,10 @@ export default function FullFeed({checkin}) {
     const strain = strains[strainId]
 
     const submitComment = async (e) => {
+        e.preventDefault()
         const userId = currentUser.id
         const checkinId = checkin.id
-        return dispatch(commentActions.postComment({userId, checkinId, commentText}))
+        if(commentText) await dispatch(commentActions.postComment({userId:userId, checkinId:checkinId, comment:commentText}))
     }
 
     return (
@@ -54,12 +53,14 @@ export default function FullFeed({checkin}) {
 
             {showComments && (
                 <div className='comments'>
-                    <input type='text' onSubmit={submitComment} onChange={(e)=>setCommentText(e.target.value)}placeholder='Add a comment...'></input>
-                    {/* onChange={setCheckinId(checkin.id)} */}
-                        <button type='submit'>Submit</button>
-                    {/* {comments.checkinId === checkin.id ? (
-                        <p>{comments.commentBody}</p>
-                    ) : null} */}
+                    <form onSubmit={submitComment}>
+                        <input type='hidden' />
+                        <input type='text'
+                            onChange={(e)=>setCommentText(e.target.value)}
+                            placeholder='Add a comment...' />
+                            <button type='submit'>Submit</button>
+                    </form>
+
                     <CommentsFeed checkin={checkin}/>
                 </div>
             )}

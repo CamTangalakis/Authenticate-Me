@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { Modal } from '../../context/Modal';
 import StrainModal from '../checkins/StrainModal'
 import './feed.css'

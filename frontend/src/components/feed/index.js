@@ -18,8 +18,8 @@ export default function Feed() {
 
     return (
         <div className='feedLayout'>
-            {Object.keys(checkins).reverse().map((key) =>
-                <FullFeed checkin={checkins[key]}/>
+            {Object.keys(checkins).reverse().map((key, i) =>
+                <FullFeed checkin={checkins[key]} key={i}/>
             )}
         </div>
     )

@@ -56,7 +56,7 @@ export const editComment = (content, id) => async (dispatch) => {
     const {text} = content
     const response = await csrfFetch(`/api/comments/${id}`, {
         method: 'PUT',
-        body: JSON.stringify({text})
+        body: JSON.stringify(text)
     })
 
     const editCom = await response.json()
