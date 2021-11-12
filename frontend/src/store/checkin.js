@@ -146,7 +146,7 @@ const checkinReducer = (state={user:null}, action) => {
         case POSTCOMM:
             newState = Object.assign({}, state);
             // console.log(action.payload, '<--------')
-            newState[action.payload.checkinId].Comments.push(action.payload);
+            newState[action.payload.checkinId].Comments?.push(action.payload);
             return newState;
         case EDIT:
             newState = Object.assign({}, state);
@@ -154,8 +154,8 @@ const checkinReducer = (state={user:null}, action) => {
             return newState;
         case EDITCOMM:
             newState = Object.assign({}, state);
-            console.log(newState, '<-------')
-            // newState[action.payload.id] = action.payload;
+            // console.log(newState, '<-------')
+            newState[action.payload] = action.payload;
             return newState;
         case GET:
             newState = Object.assign({}, state);
@@ -166,13 +166,14 @@ const checkinReducer = (state={user:null}, action) => {
             return newState;
         case DEL:
             newState = Object.assign({}, state);
+            console.log(newState[action.payload], '<----------!!!!!!!')
+            // delete newState[action.payload].Comments;
             delete newState[action.payload];
             return newState;
         case DELCOMM:
             newState = Object.assign({}, state);
-            console.log(action.payload.id, '<-----!!!!')
+            console.log(newState[action.payload.checkinId].Comments, '<-- delCom')
             const commIndex = newState[action.payload.checkinId].Comments.findIndex(comm => comm.id === action.payload.id)
-            console.log(commIndex, '<-------')
             newState[action.payload.checkinId].Comments.splice(commIndex, 1)
             newState[action.payload.checkinId].Comments = newState[action.payload.checkinId].Comments.slice()
             return newState;
