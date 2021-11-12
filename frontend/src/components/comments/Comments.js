@@ -7,6 +7,7 @@ export default function CommentsFeed ({checkin}) {
     const dispatch = useDispatch()
     const userId = useSelector(state=>state.session.user.id)
     const comments = checkin?.Comments
+    console.log(checkin.userId, userId, '<---')
 
     return (
         <>
@@ -14,7 +15,7 @@ export default function CommentsFeed ({checkin}) {
             <div key={i} className='commentBody'>
                 <p className='commentText'>{comment?.comment}</p>
 
-                {userId === checkin?.userId ? (
+                {userId === comment?.userId ? (
                     <div>
                         <button type='button' className='commentDelete' onClick={()=> {
                             return dispatch(commentActions.delComment(comment.id, checkin.id))
