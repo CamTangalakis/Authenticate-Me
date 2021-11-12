@@ -29,12 +29,12 @@ export const edit = (content) => {
     }
 }
 
-export const editComm = (content) => {
-    return {
-        type: EDITCOMM,
-        payload: content
-    }
-}
+// export const editComm = (id, content) => {
+//     return {
+//         type: EDITCOMM,
+//         payload: {id, content}
+//     }
+// }
 
 export const get = (content) => {
     return {
@@ -84,7 +84,7 @@ export const delCheckin = (id) => async (dispatch) => {
     return response
 }
 
-export const editCheckin = (content, id) => async (dispatch) => {
+export const editCheckin = (id, content) => async (dispatch) => {
     const text = content
     const response = await csrfFetch(`/api/checkins/${id}`, {
         method: 'PUT',
@@ -116,17 +116,17 @@ export const getComment = () => async (dispatch) => {
     return comment
 }
 
-export const editComment = (content, id) => async (dispatch) => {
-    const {text} = content
-    const response = await csrfFetch(`/api/comments/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify(text)
-    })
+// export const editComment = (content, id) => async (dispatch) => {
+//     const {text} = content
+//     const response = await csrfFetch(`/api/comments/${id}`, {
+//         method: 'PUT',
+//         body: JSON.stringify(text)
+//     })
 
-    const editCom = await response.json()
-    dispatch(editComm(editCom))
-    return response
-}
+//     const editCom = await response.json()
+//     dispatch(editComm(editCom))
+//     return response
+// }
 
 export const delComment = (id, checkinId) => async (dispatch) => {
     const response = await csrfFetch(`/api/comments/${id}`, {
@@ -151,11 +151,6 @@ const checkinReducer = (state={user:null}, action) => {
         case EDIT:
             newState = Object.assign({}, state);
             newState[action.payload.id] = action.payload;
-            return newState;
-        case EDITCOMM:
-            newState = Object.assign({}, state);
-            // console.log(newState, '<-------')
-            newState[action.payload] = action.payload;
             return newState;
         case GET:
             newState = Object.assign({}, state);

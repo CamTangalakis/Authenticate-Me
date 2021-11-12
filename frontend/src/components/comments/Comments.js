@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import CommentEditModal from './commentModal'
 import * as commentActions from '../../store/checkin'
+import '../feed/feed.css'
 
 export default function CommentsFeed ({checkin}) {
     const dispatch = useDispatch()
@@ -14,18 +15,18 @@ export default function CommentsFeed ({checkin}) {
     return (
         <>
              {comments?.map((comment, i)=>
-            <div key={i}>
-                <p>{comment?.comment}</p>
+            <div key={i} className='commentBody'>
+                <p className='commentText'>{comment?.comment}</p>
 
-                {/* {userId === checkin?.userId ? ( */}
+                {userId === checkin?.userId ? (
                     <div>
                         {/* <button type='button'>Edit</button> */}
-                        <CommentEditModal comment={comment}/>
-                        <button type='button' onClick={()=> {
+                        {/* <CommentEditModal comment={comment}/> */}
+                        <button type='button' className='commentDelete' onClick={()=> {
                             return dispatch(commentActions.delComment(comment.id, checkin.id))
                         }}>Delete</button>
                     </div>
-                {/* ) : null} */}
+                 ) : null}
             </div>
             )}
 

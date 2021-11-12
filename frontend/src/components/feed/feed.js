@@ -54,13 +54,13 @@ export default function FullFeed({checkin}) {
 
             {showComments && (
                 <div className='comments'>
-                    <form onSubmit={submitComment}>
+                    <form onSubmit={submitComment} className='commentForm'>
                         <input type='hidden' />
                         <input type='text'
                             value={commentText}
                             onChange={(e)=>setCommentText(e.target.value)}
                             placeholder='Add a comment...' />
-                            <button type='submit'>Submit</button>
+                            <button type='submit' className='submitComment'>Submit</button>
                     </form>
 
                     <CommentsFeed checkin={checkin}/>

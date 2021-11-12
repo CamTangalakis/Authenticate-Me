@@ -65,19 +65,13 @@
     background-color: rgb(219, 223, 209);
 }
 
-#deleteButton:hover {
+#deleteButton:hover, .commentDelete:hover {
     background-color: rgb(202, 6, 6);
     color: rgb(219, 223, 209);
     box-shadow: 0px 0px 2px black;
 }
 
-#editButton:hover {
-    background-color: rgb(19, 107, 48);
-    color: rgb(219, 223, 209);
-    box-shadow: 0px 0px 2px black;
-}
-
-#commentButton:hover {
+#editButton:hover, .submitComment:hover, #commentButton:hover {
     background-color: rgb(19, 107, 48);
     color: rgb(219, 223, 209);
     box-shadow: 0px 0px 2px black;
@@ -101,5 +95,24 @@
 
 .strainDescriptionContainer{
     border-radius: 5px;
+    background-color: rgb(219, 223, 209);
+}
+
+.commentForm{
+    margin: 10px 5px;
+}
+
+.commentBody{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(19, 107, 48,0.25);
+}
+
+.commentDelete, .submitComment {
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
     background-color: rgb(219, 223, 209);
 }
