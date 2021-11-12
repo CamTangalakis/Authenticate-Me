@@ -8,20 +8,18 @@ export default function CommentsFeed ({checkin}) {
     const dispatch = useDispatch()
     const comment = checkin.Comments
     const sessionUserId = useSelector(state => state.session.user.id)
-
-    // const [text, setText] = useState()
+    const [text, setText] = useState()
     const [showEditModal, setShowEditModal] = useState(false)
     // console.log(checkin, comment, '<----------')
 
-    // async function deleteComment(id){
-    //     await dispatch(commentActions.delComment(id))
-    // }
-    // onClick={() => deleteComment(comm.id)}
+    async function deleteComment(id){
+        await dispatch(commentActions.delComment(id))
+    }
 
     return (
         <>
-        {comment.reverse().map((comm, i)=> (
-            <div key={i}>
+        {comment.reverse().map(comm=> (
+            <>
                 <p>{comm.comment}</p>
                 {sessionUserId === comm.userId ? (
                     <div>
@@ -31,10 +29,10 @@ export default function CommentsFeed ({checkin}) {
                                     <CommentEditForm content={comm.comment}/>
                                 </Modal>
                             )}
-                        <button type='button'>Delete</button>
+                        <button type='button' onClick={deleteComment(comm.id)}>Delete</button>
                     </div>
                     ) : null }
-            </div>
+            </>
         ))}
 
         </>

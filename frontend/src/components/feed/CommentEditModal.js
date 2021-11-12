@@ -5,7 +5,6 @@ import * as commentActions from '../../store/comment'
 export default function CommentEditForm (content) {
     const dispatch = useDispatch()
     const [text, setText] = useState(content)
-    console.log(text, '<-----------')
 
     const onSubmit = async (e) => {
         await dispatch(commentActions.editComment())
