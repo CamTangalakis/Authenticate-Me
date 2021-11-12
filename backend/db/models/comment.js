@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   Comment.newComment = async function (content, User) {
-    const newComment = Comment.create(content)
+    const newComment = await Comment.create(content)
     const res = await Comment.findOne({
       where: {id: newComment.id},
       include: User
