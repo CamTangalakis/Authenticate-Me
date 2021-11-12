@@ -5,7 +5,7 @@ const DEL = 'actions/del'
 const EDIT = 'actions/edit'
 const GET = 'actions/get'
 
-export const comment = (content) => {
+export const sendComment = (content) => {
     return {
         type: COMMENT,
         payload: content
@@ -40,7 +40,7 @@ export const postComment = (content) => async (dispatch) => {
         body: JSON.stringify({userId, checkinId, comment})
     })
     const newPost = await response.json()
-    dispatch(comment(newPost.comment))
+    dispatch(sendComment(newPost.comment))
     return response
 }
 
@@ -77,7 +77,7 @@ const commentReducer = (state={user:null}, action) => {
     switch(action.type){
         case COMMENT:
             newState = Object.assign({}, state);
-            newState[action.payload.id] = action.payload;
+            newState[action.payload] = action.payload;
             return newState;
         case EDIT:
             newState = Object.assign({}, state);

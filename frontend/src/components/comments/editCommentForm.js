@@ -13,7 +13,7 @@ export default function EditCommentForm ({comment}) {
     }
 
     return (
-        <form >
+        <form onSubmit={onSubmit}>
             <h2>Edit Comment</h2>
             <input type='textarea'
                 value={commentText}

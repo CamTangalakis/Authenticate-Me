@@ -22,11 +22,11 @@ module.exports = (sequelize, DataTypes) => {
 
   Comment.newComment = async function (content, User) {
     const newComment = Comment.create(content)
-    const res = await Comment.findOne({
-      where: {id: newComment.id},
-      include: User
-    })
-    return res
+    // const res = await Comment.findOne({
+    //   where: {id: newComment.id},
+    //   include: User
+    // })
+    return newComment
   };
 
   Comment.update = async function (content, id) {

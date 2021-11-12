@@ -4,10 +4,10 @@ const { Comment, User, Checkin } = require('../../db/models');
 const router = express.Router();
 
 router.post('/', asyncHandler(async (req, res, next)=> {
-    const {userId, checkinId, commentBody} = req.body
-    const comment = await Comment.newComment({userId, checkinId, commentBody}, User)
+    const {userId, checkinId, comment} = req.body
+    const comm = await Comment.newComment({userId, checkinId, comment}, User)
 
-    return res.json({comment})
+    return res.json({comm})
 }))
 
 router.get('/:checkinId', asyncHandler(async(req, res)=> {
