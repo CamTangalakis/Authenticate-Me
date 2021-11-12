@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     text: DataTypes.TEXT
   }, {});
   Checkin.associate = function(models) {
-    Checkin.hasMany(models.Comment, {foreignKey: 'checkinId'})
+    Checkin.hasMany(models.Comment, {foreignKey: 'checkinId', onDelete: 'cascade', hooks: true})
     Checkin.belongsTo(models.User, {foreignKey: 'userId'})
     Checkin.belongsTo(models.Strain, {foreignKey: 'strainId'})
   };
