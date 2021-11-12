@@ -1,5 +1,5 @@
 .navBar{
-    background-color: rgb(166, 216, 162);
+    background-color: rgb(14, 65, 14);
     padding: 20px;
     /* margin: 20px; */
     /* width: 100%; */
@@ -10,6 +10,10 @@
 
 .weedia {
     display: flex;
+}
+
+.socialWeedia{
+    color: rgb(219, 223, 209);
 }
 
 .homeButton{

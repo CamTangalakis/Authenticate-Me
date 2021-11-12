@@ -7,10 +7,6 @@ export default function CommentsFeed ({checkin}) {
     const dispatch = useDispatch()
     const userId = useSelector(state=>state.session.user.id)
     const comments = checkin?.Comments
-    // console.log(checkin)
-    // const deleteComment = async() => {
-    //     await dispatch(commentActions.delComment())
-    // }
 
     return (
         <>
@@ -20,8 +16,6 @@ export default function CommentsFeed ({checkin}) {
 
                 {userId === checkin?.userId ? (
                     <div>
-                        {/* <button type='button'>Edit</button> */}
-                        {/* <CommentEditModal comment={comment}/> */}
                         <button type='button' className='commentDelete' onClick={()=> {
                             return dispatch(commentActions.delComment(comment.id, checkin.id))
                         }}>Delete</button>
