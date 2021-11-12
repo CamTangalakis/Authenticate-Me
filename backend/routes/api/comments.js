@@ -12,7 +12,7 @@ router.post('/', asyncHandler(async (req, res, next)=> {
 
 router.get('/:checkinId', asyncHandler(async(req, res)=> {
     const checkinId = +req.params.checkinId
-    let comment = Comment.checkinComments(User, checkinId)
+    let comment = await Comment.checkinComments(User, checkinId)
     res.json(comment)
 }))
 

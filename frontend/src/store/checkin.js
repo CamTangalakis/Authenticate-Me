@@ -47,6 +47,7 @@ export const postCheckin = (content) => async (dispatch) => {
 export const getCheckin = () => async (dispatch) => {
     const checkins = await csrfFetch('/api/checkins')
     const data = await checkins.json()
+    // console.log(checkins, '!!!!!!!!11')
     dispatch(get(data))
     return checkins
 }

@@ -10,5 +10,6 @@ module.exports = (sequelize, DataTypes) => {
     Checkin.belongsTo(models.User, {foreignKey: 'userId'})
     Checkin.belongsTo(models.Strain, {foreignKey: 'strainId'})
   };
+
   return Checkin;
 };

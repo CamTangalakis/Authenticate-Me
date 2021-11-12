@@ -17,7 +17,6 @@ export default function FullFeed({checkin}) {
     const [commentText, setCommentText] = useState('')
     const [showComments, setShowComments] = useState(false)
     const [showEditModal, setShowEditModal] = useState(false);
-    const [showSplash, setShowSplash] = useState(true)
     const strainId = checkin?.strainId
     const strain = strains[strainId]
 
@@ -29,12 +28,6 @@ export default function FullFeed({checkin}) {
 
     return (
         <div id='feedParts'>
-            {/* <SplashModal showSplash={showSplash} setShowSplash={setShowSplash}/> */}
-            {/* {showSplash && (
-                <Modal onClose={() => setShowSplash(false)}>
-                    <SplashPage />
-                </Modal>
-            )} */}
 
             <h3>{strain?.name}</h3>
             <p id='checkinText'>{checkin?.text}</p>
@@ -67,7 +60,7 @@ export default function FullFeed({checkin}) {
                     {/* {comments.checkinId === checkin.id ? (
                         <p>{comments.commentBody}</p>
                     ) : null} */}
-                    <CommentsFeed checkinId={checkin?.id}/>
+                    <CommentsFeed checkin={checkin}/>
                 </div>
             )}
 

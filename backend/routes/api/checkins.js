@@ -2,7 +2,7 @@ const express = require('express')
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const { Checkin } = require('../../db/models');
+const { Checkin, Comment } = require('../../db/models');
 const router = express.Router();
 
 const validateCheckin = [
@@ -25,7 +25,10 @@ router.post('/', validateCheckin, asyncHandler(async (req, res, next)=> {
 }))
 
 router.get('/', asyncHandler(async(req, res)=> {
-    let checkins = await Checkin.findAll()
+    console.log('HERE!!!!!!!!!!!!!111')
+    let checkins = await Checkin.findAll({
+        include: Comment
+    })
     res.json(checkins)
 }))
 
