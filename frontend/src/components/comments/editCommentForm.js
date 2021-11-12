@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import * as commentActions from '../../store/comment'
+import * as commentActions from '../../store/checkin'
 
 export default function EditCommentForm ({comment}) {
     const dispatch = useDispatch()
@@ -9,7 +9,7 @@ export default function EditCommentForm ({comment}) {
     // console.log(comment, '<--')
 
     const onSubmit = async() => {
-        await dispatch(commentActions.editComment({commentText}))
+        await dispatch(commentActions.editComment({commentId: comment.id, commentText}))
     }
 
     return (

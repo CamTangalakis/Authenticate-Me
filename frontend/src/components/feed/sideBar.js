@@ -22,7 +22,7 @@ export default function SideBar() {
                <h1 className='welcome'>Welcome, {sessionUser.username}!</h1> :
                <h1 className='welcome'>Welcome, user!</h1>}
 
-        <h1>Strains</h1>
+        <h1 className='strainHeader'>Strains</h1>
             <div>
                 {strains?.map((strain, i)=> (
                     <div className='strainFeed' key={i}>

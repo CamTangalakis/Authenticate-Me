@@ -1,11 +1,11 @@
 .navBar{
-    /* background-color: rgb(138, 199, 151); */
+    background-color: rgb(166, 216, 162);
     padding: 20px;
     /* margin: 20px; */
     /* width: 100%; */
     right: 0;
     left: 0;
-    border-bottom: 1px solid rgb(77, 47, 30);
+    border-bottom: 1px solid green;
 }
 
 .weedia {
@@ -48,6 +48,12 @@
     right: 10px;
     top: 30px;
     padding: 10px;
+}
+
+#formButton:hover, #logoutButton:hover {
+    background-color: rgb(19, 107, 48);
+    color: rgb(219, 223, 209);
+    box-shadow: 0px 0px 2px black;
 }
 
 /* .fa-user-circle{

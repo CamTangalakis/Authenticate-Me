@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import * as checkinActions from '../../store/checkin';
-import * as commentActions from '../../store/comment'
+import * as commentActions from '../../store/checkin'
 import { Modal } from '../../context/Modal';
 import CheckinEditForm from "../checkins/CheckinEditForm";
 import CommentsFeed from "../comments/Comments";
@@ -22,17 +22,18 @@ export default function FullFeed({checkin}) {
         e.preventDefault()
         const userId = currentUser.id
         const checkinId = checkin.id
-        if(commentText) await dispatch(commentActions.postComment({userId:userId, checkinId:checkinId, comment:commentText}))
+        if(commentText) await dispatch(checkinActions.postComment({userId:userId, checkinId:checkinId, comment:commentText}))
+        setCommentText('')
     }
 
     return (
         <div id='feedParts'>
 
-            <h3>{strain?.name}</h3>
+            <h3 className='strainHeader'>{strain?.name}</h3>
             <p id='checkinText'>{checkin?.text}</p>
 
             <div className='feedButtons'>
-                <button type='button' onClick={() => setShowComments(!showComments)}>Comment</button>
+                <button type='button' id='commentButton' onClick={() => setShowComments(!showComments)}>Comment</button>
 
                 {currentUser?.id === checkin?.userId ? (
                     <div id={`checkinButtons`}>
@@ -44,7 +45,7 @@ export default function FullFeed({checkin}) {
                                 </Modal>
                             )}
 
-                        <button type='button' id={`deleteButton ${checkin?.id}`} onClick={() => {
+                        <button type='button' id='deleteButton' onClick={() => {
                             return dispatch(checkinActions.delCheckin(checkin.id))
                         }} >Delete</button>
                     </div>
