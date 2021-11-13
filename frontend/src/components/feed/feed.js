@@ -5,6 +5,7 @@ import * as commentActions from '../../store/checkin'
 import { Modal } from '../../context/Modal';
 import CheckinEditForm from "../checkins/CheckinEditForm";
 import CommentsFeed from "../comments/Comments";
+// import Delete from '../../images'
 import './feed.css'
 
 export default function FullFeed({checkin}) {

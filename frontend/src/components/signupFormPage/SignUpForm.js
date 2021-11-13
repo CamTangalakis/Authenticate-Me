@@ -41,7 +41,7 @@ const SignUpFormPage = () => {
             <label id='signUpField'>Email:</label>
                 <input
                     type='text'
-                    placeholder='Enter username'
+                    placeholder='Enter email'
                     value={email}
                     onChange={(e)=>setEmail(e.target.value)} />
             <label id='signUpField'>Password:</label>
@@ -53,7 +53,7 @@ const SignUpFormPage = () => {
             <label id='signUpField'>Confirm Password:</label>
                 <input
                     type='password'
-                    placeholder='Enter username'
+                    placeholder='Enter password again'
                     value={confirmPassword}
                     onChange={(e)=>setConfirmPassword(e.target.value)} />
             <button id='signUpButton' type='submit'>Sign Up</button>
