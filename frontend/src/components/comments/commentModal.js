@@ -8,10 +8,10 @@ function CommentEditModal({comment, checkin}) {
 
   return (
     <>
-      <button id='formButton' onClick={() => setShowModal(true)}>Edit</button>
+      <button id='editCommentButton' onClick={() => setShowModal(true)}>Edit</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditCommentForm setShowModal={setShowModal} comment={comment} checkin={checkin}/>
+          <EditCommentForm setShowModal={setShowModal} comment={comment} checkin={checkin} setShowModal={setShowModal}/>
         </Modal>
       )}
     </>

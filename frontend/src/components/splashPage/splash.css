@@ -1,8 +1,22 @@
 .splashPage{
-    background-color: rgb(69, 151, 69);
+    background-image: url('../../images/Untitled_Artwork.png');
     padding: 20px;
 }
+
+.splashModal{
+    width: 50%;
+    height: 500px;
+}
+
  .splashButtonContainer{
      display: flex;
      justify-content: right;
+ }
+
+ .splashHeader{
+    color: rgb(219, 223, 209);
+ }
+
+ .splashBody{
+    color: rgb(219, 223, 209);
  }

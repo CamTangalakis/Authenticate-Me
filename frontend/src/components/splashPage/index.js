@@ -1,5 +1,6 @@
 import { Modal } from '../../context/Modal';
 import SplashPage from './splashPage'
+import './splash.css'
 
 function SplashModal({showSplash, setShowSplash}) {
   return (

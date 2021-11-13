@@ -1,8 +1,9 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import * as commentActions from '../../store/checkin'
+import './commentStyling.css'
 
-export default function EditCommentForm ({comment, checkin}) {
+export default function EditCommentForm ({comment, checkin, setShowModal}) {
     const dispatch = useDispatch()
     const text = comment.comment
     const [commentText, setCommentText] = useState(text)
@@ -13,17 +14,19 @@ export default function EditCommentForm ({comment, checkin}) {
     const onSubmit = async(e) => {
         e.preventDefault()
         await dispatch(commentActions.editComment({id: comment.id, userId, checkinId, comment: commentText}))
+        setShowModal(false);
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <h2>Edit Comment</h2>
+        <form onSubmit={onSubmit} className='commentEditForm'>
+            <h2 className='editHeader'>Edit Comment</h2>
             <input type='textarea'
+                className='editField'
                 value={commentText}
                 onChange={(e)=>setCommentText(e.target.value)}
                 />
 
-            <button type='submit'>Submit</button>
+            <button type='submit' className='submitComment'>Submit</button>
         </form>
     )
 }

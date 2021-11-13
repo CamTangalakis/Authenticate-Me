@@ -59,9 +59,10 @@ export default function FullFeed({checkin}) {
                         <input type='hidden' />
                         <input type='text'
                             value={commentText}
+                            className='commentInputField'
                             onChange={(e)=>setCommentText(e.target.value)}
                             placeholder='Add a comment...' />
-                            <button type='submit' className='submitComment'>Submit</button>
+                        <button type='submit' className='submitComment'>Submit</button>
                     </form>
 
                     <CommentsFeed checkin={checkin}/>

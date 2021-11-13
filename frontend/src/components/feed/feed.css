@@ -31,6 +31,10 @@
     border-radius: 5px;
 }
 
+.commentInputField{
+    width: 70%;
+}
+
 .strainDesText{
     padding: 10px;
 }
@@ -122,6 +126,7 @@
 
 .commentForm{
     margin: 10px 5px;
+    justify-content: space-between;
 }
 
 .commentBody{

@@ -26,11 +26,11 @@ function StrainsModal({strain}, id) {
               setShowModal={setShowModal}
               showModal={showModal}
               strain={strain}/> */}
-            <button type='button' className='favoriteStrain'
+            {/* <button type='button' className='favoriteStrain'
             // onClick={()=>{
             //   await dispatch(favStrainActions.postFavStrain(userId, strainId))
             // }}
-            >Favorite</button>
+            >Favorite</button> */}
           </div>
         </Modal>
       )}

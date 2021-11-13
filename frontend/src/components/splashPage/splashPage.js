@@ -7,12 +7,12 @@ export default function SplashPage(){
         <div className='splashPage'>
             <h1 className='splashHeader'>unTokd: the social weedia network</h1>
 
-            <p className='splashBody'>discover new strains, see what your friends are smoking, and find where to get the best weed.</p>
+            <p className='splashBody'>discover new strains, see what your friends are smoking, and find the best weed.</p>
 
-            <div className='splashButtonContainer'>
+            {/* <div className='splashButtonContainer'>
                 <LoginFormModal id='splashButtons'/>
                 <SignUpFormModal id='splashButtons'/>
-            </div>
+            </div> */}
         </div>
     )
 }
