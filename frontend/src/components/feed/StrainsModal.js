@@ -8,7 +8,7 @@ import './feed.css'
 
 function StrainsModal({strain}, id) {
   const dispatch = useDispatch()
-  const userId = useSelector(state=>state.session.user.id)
+  const userId = useSelector(state=>state.session?.user?.id)
   const [showModal, setShowModal] = useState(false);
   const [showStrain, setShowStrain] = useState(false)
 
@@ -20,12 +20,12 @@ function StrainsModal({strain}, id) {
           <div className='strainDescriptions'>
             <h1>{strain.name}</h1>
             <p className='strainDesText'>{strain.description}</p>
-            <StrainModal
+            {/* <StrainModal
               // className='strainM'
               onClick={()=>setShowStrain(false)}
               setShowModal={setShowModal}
               showModal={showModal}
-              strain={strain}/>
+              strain={strain}/> */}
             <button type='button' className='favoriteStrain'
             // onClick={()=>{
             //   await dispatch(favStrainActions.postFavStrain(userId, strainId))

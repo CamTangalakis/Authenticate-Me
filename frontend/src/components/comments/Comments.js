@@ -5,9 +5,9 @@ import '../feed/feed.css'
 
 export default function CommentsFeed ({checkin}) {
     const dispatch = useDispatch()
-    const userId = useSelector(state=>state.session.user.id)
+    const userId = useSelector(state=>state.session?.user?.id)
     const comments = checkin?.Comments
-    console.log(checkin.userId, userId, '<---')
+    console.log(checkin, userId, '<---!!!!!!!!!!!!!!')
 
     return (
         <>
@@ -20,7 +20,7 @@ export default function CommentsFeed ({checkin}) {
                         <button type='button' className='commentDelete' onClick={()=> {
                             return dispatch(commentActions.delComment(comment.id, checkin.id))
                         }}>Delete</button>
-                        {/* <CommentEditModal comment={comment}/> */}
+                        <CommentEditModal comment={comment} checkin={checkin}/>
                     </div>
                  ) : null}
             </div>

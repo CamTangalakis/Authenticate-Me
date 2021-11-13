@@ -34,10 +34,10 @@ router.get('/', asyncHandler(async(req, res)=> {
 
 router.put(`/:id`, asyncHandler(async(req, res)=> {
     const {id} = req.params
-    const {text} = req.body
-    console.log(text)
+    const {text, userId, checkinId} = req.body
+    // console.log(text)
     const checkin = await Checkin.findByPk(id);
-    await checkin.update({text})
+    await checkin.update({userId, checkinId, text})
 
     res.json(checkin)
 }))

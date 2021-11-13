@@ -52,7 +52,7 @@ export const edit = (content) => {
     }
 }
 
-export const editCheckin = (id, content) => async (dispatch) => {
+export const editCheckin = (content, id) => async (dispatch) => {
     const text = content
     const response = await csrfFetch(`/api/checkins/${id}`, {
         method: 'PUT',
@@ -64,18 +64,21 @@ export const editCheckin = (id, content) => async (dispatch) => {
     return response
 }
 
-export const editComm = (id, content) => {
+export const editComm = (content) => {
     return {
         type: EDITCOMM,
-        payload: {id, content}
+        payload: content
     }
 }
 
-export const editComment = (content, id) => async (dispatch) => {
-    const comment = content
+export const editComment = (content) => async (dispatch) => {
+    const {id, userId, checkinId, comment} = content
+    // const {id} = content
+
+    console.log(id, '<-------------------')
     const response = await csrfFetch(`/api/comments/${id}`, {
         method: 'PUT',
-        body: JSON.stringify({comment})
+        body: JSON.stringify({id, userId, checkinId, comment})
     })
 
     const editCom = await response.json()
@@ -154,8 +157,9 @@ const checkinReducer = (state={user:null}, action) => {
             return newState;
         case EDITCOMM:
             newState = Object.assign({}, state);
-            // console.log(newState, '<-------')
-            newState[action.payload] = action.payload;
+            const commId = newState[action.payload.checkinId].Comments.findIndex(comId => comId.id === action.payload.id)
+            // console.log(newState[action.payload.checkinId].Comments, commId, '<-------$%^$%^')
+            newState[action.payload.checkinId].Comments[commId] = action.payload;
             return newState;
         case GET:
             newState = Object.assign({}, state);
