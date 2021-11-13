@@ -20,6 +20,27 @@
     font-size: 15px;
 }
 
+.favoriteStrain {
+    padding: 10px;
+    margin: 5px;
+    background-color: rgb(9, 94, 47);
+    color: rgb(219, 223, 209);
+    border: none;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+.strainDesText{
+    padding: 10px;
+}
+
+.strainDescriptions{
+    background-color: rgb(219, 223, 209);
+    padding: 10px;
+    /* border-radius: 5px; */
+}
+
 #feedParts {
     background-color: rgb(166, 216, 162);
     border-radius: 10px;

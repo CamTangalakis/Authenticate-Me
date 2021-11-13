@@ -40,7 +40,7 @@ function Navigation({ isLoaded }){
     <ul className='navBar'>
       <div className='weedia'>
         <NavLink exact to="/" className='homeButton'>unTokd</NavLink>
-        <h3 className='socialWeedia'>the new social weedia</h3>
+        <h3 className='socialWeedia'>the social weedia network</h3>
       </div>
         {isLoaded && sessionLinks}
     </ul>

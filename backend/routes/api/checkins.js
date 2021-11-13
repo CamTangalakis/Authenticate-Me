@@ -25,7 +25,7 @@ router.post('/', validateCheckin, asyncHandler(async (req, res, next)=> {
 }))
 
 router.get('/', asyncHandler(async(req, res)=> {
-    console.log('HERE!!!!!!!!!!!!!111')
+    // console.log('HERE!!!!!!!!!!!!!111')
     let checkins = await Checkin.findAll({
         include: Comment
     })

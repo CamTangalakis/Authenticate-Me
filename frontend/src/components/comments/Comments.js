@@ -20,6 +20,7 @@ export default function CommentsFeed ({checkin}) {
                         <button type='button' className='commentDelete' onClick={()=> {
                             return dispatch(commentActions.delComment(comment.id, checkin.id))
                         }}>Delete</button>
+                        {/* <CommentEditModal comment={comment}/> */}
                     </div>
                  ) : null}
             </div>

@@ -15,48 +15,6 @@ export const post = (content) => {
     }
 }
 
-export const postComm = (content) => {
-    return {
-        type: POSTCOMM,
-        payload: content
-    }
-}
-
-export const edit = (content) => {
-    return {
-        type: EDIT,
-        payload: content
-    }
-}
-
-// export const editComm = (id, content) => {
-//     return {
-//         type: EDITCOMM,
-//         payload: {id, content}
-//     }
-// }
-
-export const get = (content) => {
-    return {
-        type: GET,
-        payload: content
-    }
-}
-
-export const del = (id) => {
-    return {
-        type: DEL,
-        payload: id
-    }
-}
-
-export const delComm = (id, checkinId) => {
-    return {
-        type: DELCOMM,
-        payload: {id, checkinId}
-    }
-}
-
 export const postCheckin = (content) => async (dispatch) => {
     const {userId, strainId, text} = content
     const response = await csrfFetch('/api/checkins', {
@@ -68,32 +26,11 @@ export const postCheckin = (content) => async (dispatch) => {
     return response
 }
 
-export const getCheckin = () => async (dispatch) => {
-    const checkins = await csrfFetch('/api/checkins')
-    const data = await checkins.json()
-    // console.log(checkins, '!!!!!!!!11')
-    dispatch(get(data))
-    return checkins
-}
-
-export const delCheckin = (id) => async (dispatch) => {
-    const response = await csrfFetch(`/api/checkins/${id}`, {
-        method: 'DELETE'
-    })
-    dispatch(del(id))
-    return response
-}
-
-export const editCheckin = (id, content) => async (dispatch) => {
-    const text = content
-    const response = await csrfFetch(`/api/checkins/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify({text})
-    })
-    const editPost = await response.json()
-    // console.log(editPost, '<---------')
-    dispatch(edit(editPost))
-    return response
+export const postComm = (content) => {
+    return {
+        type: POSTCOMM,
+        payload: content
+    }
 }
 
 export const postComment = (content) => async (dispatch) => {
@@ -108,6 +45,59 @@ export const postComment = (content) => async (dispatch) => {
     return response
 }
 
+export const edit = (content) => {
+    return {
+        type: EDIT,
+        payload: content
+    }
+}
+
+export const editCheckin = (id, content) => async (dispatch) => {
+    const text = content
+    const response = await csrfFetch(`/api/checkins/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({text})
+    })
+    const editPost = await response.json()
+    // console.log(editPost, '<---------')
+    dispatch(edit(editPost))
+    return response
+}
+
+export const editComm = (id, content) => {
+    return {
+        type: EDITCOMM,
+        payload: {id, content}
+    }
+}
+
+export const editComment = (content, id) => async (dispatch) => {
+    const comment = content
+    const response = await csrfFetch(`/api/comments/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({comment})
+    })
+
+    const editCom = await response.json()
+    dispatch(editComm(editCom))
+    return response
+}
+
+export const get = (content) => {
+    return {
+        type: GET,
+        payload: content
+    }
+}
+
+export const getCheckin = () => async (dispatch) => {
+    const checkins = await csrfFetch('/api/checkins')
+    const data = await checkins.json()
+    // console.log(checkins, '!!!!!!!!11')
+    dispatch(get(data))
+    return checkins
+}
+
 export const getComment = () => async (dispatch) => {
     const comment = await csrfFetch('/api/comments')
     const data = await comment.json()
@@ -116,17 +106,27 @@ export const getComment = () => async (dispatch) => {
     return comment
 }
 
-// export const editComment = (content, id) => async (dispatch) => {
-//     const {text} = content
-//     const response = await csrfFetch(`/api/comments/${id}`, {
-//         method: 'PUT',
-//         body: JSON.stringify(text)
-//     })
+export const del = (id) => {
+    return {
+        type: DEL,
+        payload: id
+    }
+}
 
-//     const editCom = await response.json()
-//     dispatch(editComm(editCom))
-//     return response
-// }
+export const delCheckin = (id) => async (dispatch) => {
+    const response = await csrfFetch(`/api/checkins/${id}`, {
+        method: 'DELETE'
+    })
+    dispatch(del(id))
+    return response
+}
+
+export const delComm = (id, checkinId) => {
+    return {
+        type: DELCOMM,
+        payload: {id, checkinId}
+    }
+}
 
 export const delComment = (id, checkinId) => async (dispatch) => {
     const response = await csrfFetch(`/api/comments/${id}`, {
@@ -152,6 +152,11 @@ const checkinReducer = (state={user:null}, action) => {
             newState = Object.assign({}, state);
             newState[action.payload.id] = action.payload;
             return newState;
+        case EDITCOMM:
+            newState = Object.assign({}, state);
+            // console.log(newState, '<-------')
+            newState[action.payload] = action.payload;
+            return newState;
         case GET:
             newState = Object.assign({}, state);
             newState = action.payload.reduce((accumulator, element)=> {
@@ -161,8 +166,6 @@ const checkinReducer = (state={user:null}, action) => {
             return newState;
         case DEL:
             newState = Object.assign({}, state);
-            console.log(newState[action.payload], '<----------!!!!!!!')
-            // delete newState[action.payload].Comments;
             delete newState[action.payload];
             return newState;
         case DELCOMM:

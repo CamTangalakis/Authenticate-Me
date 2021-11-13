@@ -1,6 +1,6 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
-const { Comment, User, Checkin } = require('../../db/models');
+const { Comment, User } = require('../../db/models');
 const router = express.Router();
 
 router.post('/', asyncHandler(async (req, res, next)=> {
@@ -18,11 +18,11 @@ router.get('/:checkinId', asyncHandler(async(req, res)=> {
 
 router.put('/:id', asyncHandler(async(req, res)=> {
     const {id} = req.params
-    const {commentBody} = req.body
-
-    const comment = await Comment.update(commentBody, id)
+    const {comment} = req.body
+    const findComment = await Comment.findByPk(id)
+    await findComment.update({comment})
     // await comment.update(commentBody)
-    res.json(comment)
+    res.json(findComment)
 }))
 
 router.delete('/:id', asyncHandler(async(req, res)=> {

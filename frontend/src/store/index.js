@@ -5,12 +5,14 @@ import sessionReducer from './session'
 import checkinReducer from './checkin'
 import commentReducer from './comment'
 import strainReducer from './strain';
+// import favStrainReducer from './favStrain'
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     checkin: checkinReducer,
     comment: commentReducer,
-    strain: strainReducer
+    strain: strainReducer,
+    // favStrain: favStrainReducer
 });
 
 let enhancer;

@@ -6,10 +6,10 @@
 //     const dispatch = useDispatch()
 //     const text = comment.comment
 //     const [commentText, setCommentText] = useState(text)
-//     console.log(comment.id, '<--')
+//     console.log(comment.id, commentText, '<----------')
 
 //     const onSubmit = async() => {
-//         await dispatch(commentActions.editComment({id: comment.id, content: commentText}))
+//         await dispatch(commentActions.editComment({id: comment.id, comment: commentText}))
 //     }
 
 //     return (
