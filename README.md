@@ -12,7 +12,7 @@ https://github.com/CamTangalakis/unTokd-New-Social-Weedia/wiki/MVP-Features
 
 This site is a place for people to come and explore their limitless options for cannabis products, see what others are smoking, and interact with other stoners. Based on unTapped,  this site allows users to make checkins based on what weed they're smoking, and comment on what they think of it. 
 
-##Languages and Libraries
+### Languages and Libraries
 
 Javascript
 
@@ -26,7 +26,7 @@ React JS
 
 Redux
 
-##Clone unTokd 
+### Clone unTokd 
 
 Clone untokd with the command git clone https://github.com/CamTangalakis/unTokd-New-Social-Weedia.git
 
@@ -48,5 +48,5 @@ Migrate to localhost:3000 in your browser to checkout the site!
 
 Happy coding!
 
-##Upcoming features: 
+### Upcoming features: 
 Profile editing, favorite strains, apply tags to search for strains. 
