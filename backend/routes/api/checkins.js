@@ -18,8 +18,8 @@ const validateCheckin = [
 ]
 
 router.post('/', validateCheckin, asyncHandler(async (req, res, next)=> {
-    const {userId, strainId, text} = req.body
-    const checkin = await Checkin.create({userId, strainId, text})
+    const {userId, strainId, text, rating, photo } = req.body
+    const checkin = await Checkin.create({userId, strainId, text, rating, photo })
 
     return res.json({checkin})
 }))
