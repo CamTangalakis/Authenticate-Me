@@ -32,7 +32,7 @@ router.get('/', asyncHandler(async(req, res)=> {
     res.json(checkins)
 }))
 
-router.put(`/:id`, asyncHandler(async(req, res)=> {
+router.put(`/:id/`, asyncHandler(async(req, res)=> {
     const {id} = req.params
     const {text, userId, checkinId} = req.body
     // console.log(text)
@@ -42,7 +42,7 @@ router.put(`/:id`, asyncHandler(async(req, res)=> {
     res.json(checkin)
 }))
 
-router.delete(`/:id`, asyncHandler(async(req, res)=> {
+router.delete(`/:id/`, asyncHandler(async(req, res)=> {
     const {id} = req.params
     const checkin = await Checkin.findByPk(id);
     await checkin.destroy();

@@ -9,7 +9,7 @@ router.post('/', asyncHandler(async(req, res)=> {
     return res.json({fav})
 }))
 
-router.delete('/:id', asyncHandler(async(req, res)=>{
+router.delete('/:id/', asyncHandler(async(req, res)=>{
     const id = req.params
     const fav = await FavoriteStrain.findByPk(id);
     await fav.destroy();

@@ -7,6 +7,7 @@
     "sequelize": "sequelize",
     "sequelize-cli": "sequelize-cli",
     "start": "per-env",
+    "server": "nodemon server --ignore client",
     "start:development": "nodemon -r dotenv/config ./bin/www",
     "start:production": "node ./bin/www"
   },
@@ -26,6 +27,7 @@
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
     "per-env": "^1.0.2",
     "pg": "^8.7.1",
     "sequelize": "^5.22.4",

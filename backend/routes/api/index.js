@@ -15,7 +15,7 @@ router.use('/comments', commentRouter)
 router.use('/strains', strainRouter)
 // router.use('/favStrain', favStrainRouter)
 
-router.post('/test', function(req, res) {
+router.post('/test/', function(req, res) {
     res.json({ requestBody: req.body });
 });
 

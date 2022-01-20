@@ -10,13 +10,13 @@ router.post('/', asyncHandler(async (req, res, next)=> {
     return res.json({comm})
 }))
 
-router.get('/:checkinId', asyncHandler(async(req, res)=> {
+router.get('/:checkinId/', asyncHandler(async(req, res)=> {
     const checkinId = +req.params.checkinId
     let comment = await Comment.checkinComments(User, checkinId)
     res.json(comment)
 }))
 
-router.put('/:id', asyncHandler(async(req, res)=> {
+router.put('/:id/', asyncHandler(async(req, res)=> {
     const {id} = req.params
     const {comment} = req.body
     const findComment = await Comment.findByPk(id)
@@ -25,7 +25,7 @@ router.put('/:id', asyncHandler(async(req, res)=> {
     res.json(findComment)
 }))
 
-router.delete('/:id', asyncHandler(async(req, res)=> {
+router.delete('/:id/', asyncHandler(async(req, res)=> {
     const {id} = req.params
     const comment = await Comment.findByPk(id);
     await comment.destroy();
