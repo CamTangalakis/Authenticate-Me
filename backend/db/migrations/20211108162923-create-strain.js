@@ -13,13 +13,20 @@ module.exports = {
         type: Sequelize.STRING(50),
         unique: true
       },
-      strain: {
+      strainType: {
         allowNull: false,
         type: Sequelize.STRING(15)
       },
       description: {
         allowNull: false,
-        type: Sequelize.TEXT
+        type: Sequelize.STRING
+      },
+      photo: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      brand: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

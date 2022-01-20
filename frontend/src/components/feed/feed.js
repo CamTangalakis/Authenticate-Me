@@ -27,14 +27,25 @@ export default function FullFeed({checkin}) {
         setCommentText('')
     }
 
+    let stars = ''
+    let ratingNumber = checkin?.rating
+    for (let i=0; i<5; i++) {
+        if (ratingNumber >= 1) stars += '★'
+        else stars += '☆';
+        ratingNumber -= 1;
+    }
+
     return (
         <div id='feedParts'>
 
-            <h3 className='strainHeader'>{strain?.name}</h3>
+            <div className='strainHeader'>
+                <h3>{strain?.name}</h3>
+                <p className='stars'>{stars}</p>
+            </div>
             <p id='checkinText'>{checkin?.text}</p>
 
             <div className='feedButtons'>
-                <button type='button' id='commentButton' onClick={() => setShowComments(!showComments)}>Comment</button>
+                <button type='button' id='commentButton' onClick={() => setShowComments(!showComments)}><strong>Comment</strong> <i class="fas fa-chevron-down"></i></button>
 
                 {currentUser?.id === checkin?.userId ? (
                     <div id={`checkinButtons`}>

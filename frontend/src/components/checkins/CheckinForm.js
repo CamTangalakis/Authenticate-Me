@@ -9,6 +9,8 @@ const CheckinForm = ({setShowModal}) => {
     const dispatch = useDispatch()
     const [text, setText] = useState('')
     const [strainId, setStrainId] = useState()
+    const [rating, setRating] = useState(0)
+    const [photo, setPhoto] = useState('')
     const [errors, setErrors] = useState([])
 
     const sessionUser = useSelector(state => state.session.user);
@@ -19,7 +21,7 @@ const CheckinForm = ({setShowModal}) => {
         e.preventDefault();
 
         if(text && strainId) {
-            await dispatch(checkinActions.postCheckin({ userId, strainId, text }))
+            await dispatch(checkinActions.postCheckin({ userId, strainId, text, rating, photo }))
                 .catch(async (res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);
@@ -49,12 +51,20 @@ const CheckinForm = ({setShowModal}) => {
                 </select>
 
             <label id='checkinField'>Comment:</label>
-                <input
+                <textArea
                     id='checkinText'
-                    type='textarea'
                     placeholder='Say something...'
                     value={text}
                     onChange={(e)=>setText(e.target.value)}
+                />
+
+            <label id='checkinField'>Add Photo</label>
+                <input
+                    id='checkinText'
+                    type='text'
+                    placeholder='Add a photo...'
+                    value={photo}
+                    onChange={(e)=>setPhoto(e.target.value)}
                 />
 
             <button type='submit' id='checkInButton'>Submit</button>

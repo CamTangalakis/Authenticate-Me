@@ -22,6 +22,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING.BINARY
       },
+      owner: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN
+      },
+      profilePic: {
+        type: Sequelize.STRING,
+        defaultValue: "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

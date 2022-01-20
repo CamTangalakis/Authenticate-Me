@@ -26,7 +26,8 @@
 }
 
 #checkinText{
-    height: 50px;
+    height: 25px;
+    padding: 5px;
 }
 
 #checkinText::placeholder{
