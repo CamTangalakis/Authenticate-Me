@@ -1,6 +1,7 @@
 # unTokd-New-Social-Weedia
 
 ## Welcome to unTokd, the new social weedia network!
+A simple review site based on every stoner's favorite strains! Rate and comment on the strains you're smoking, and see what others are putting in their pipes. 
 ### Live Site:
 https://untokd.herokuapp.com
 
