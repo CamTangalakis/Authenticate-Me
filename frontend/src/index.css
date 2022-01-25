@@ -1,4 +1,10 @@
 /* TODO Add site wide styles */
+body {
+    width: 101%;
+    height: 100%;
+    margin: -20px -20px -20px -10px;
+
+}
 .feed {
     display: flex;
     justify-content: space-between;

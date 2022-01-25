@@ -1,11 +1,11 @@
 .splashPage{
-    background-image: url('../../images/Untitled_Artwork.png');
-    padding: 20px;
-}
-
-.splashModal{
-    width: 50%;
-    height: 500px;
+    /* background-image: url('../../images/Untitled_Artwork.png'); */
+    background-color: rgb(16, 61, 16);
+    /* padding: 20px; */
+    margin: -22px auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
  .splashButtonContainer{
@@ -13,10 +13,10 @@
      justify-content: right;
  }
 
- .splashHeader{
-    color: rgb(219, 223, 209);
- }
-
  .splashBody{
     color: rgb(219, 223, 209);
  }
+
+.splashIntro {
+    /* background: url('../../images/unTokdSplash.png'); */
+}
