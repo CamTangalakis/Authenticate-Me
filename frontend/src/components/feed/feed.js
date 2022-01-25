@@ -7,8 +7,10 @@ import CheckinEditForm from "../checkins/CheckinEditForm";
 import CommentsFeed from "../comments/Comments";
 // import Delete from '../../images'
 import './feed.css'
+import { useNavigate } from "react-router-dom";
 
 export default function FullFeed({checkin}) {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const currentUser = useSelector((state) => state.session.user)
     const strains = useSelector((state) => state.strain)
@@ -29,10 +31,13 @@ export default function FullFeed({checkin}) {
 
     let stars = ''
     let ratingNumber = checkin?.rating
-    for (let i=0; i<5; i++) {
-        if (ratingNumber >= 1) stars += '★'
-        else stars += '☆';
-        ratingNumber -= 1;
+    if (ratingNumber === 0) stars = ''
+    else {
+        for (let i=0; i<5; i++) {
+            if (ratingNumber >= 1) stars += '★'
+            else stars += '☆';
+            ratingNumber -= 1;
+        }
     }
 
     return (
@@ -66,15 +71,17 @@ export default function FullFeed({checkin}) {
 
             {showComments && (
                 <div className='comments'>
-                    <form onSubmit={submitComment} className='commentForm'>
-                        <input type='hidden' />
-                        <input type='text'
-                            value={commentText}
-                            className='commentInputField'
-                            onChange={(e)=>setCommentText(e.target.value)}
-                            placeholder='Add a comment...' />
-                        <button type='submit' className='submitComment'>Submit</button>
-                    </form>
+                    {currentUser ? (
+                        <form onSubmit={submitComment} className='commentForm'>
+                            <input type='hidden' />
+                            <input type='text'
+                                value={commentText}
+                                className='commentInputField'
+                                onChange={(e)=>setCommentText(e.target.value)}
+                                placeholder='Add a comment...' />
+                            <button type='submit' className='submitComment'>Submit</button>
+                        </form>
+                    ): null}
 
                     <CommentsFeed checkin={checkin}/>
                 </div>
