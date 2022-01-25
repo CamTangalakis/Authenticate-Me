@@ -18,8 +18,20 @@ function StrainsModal({strain}, id) {
       {showStrain && (
         <Modal onClose={() => setShowStrain(false)}>
           <div className='strainDescriptions'>
-            <h1>{strain.name}</h1>
-            <p className='strainDesText'>{strain.description}</p>
+            <h1 className='strainName'>{strain.name}</h1>
+            <div className='leftPanel'>
+              <img className='strainPhoto' src={strain.photo} />
+              <div className='rightPanel'>
+                <p className='strainDesText'>{strain.description}</p>
+                <div className='strainInfo'>
+                  <p className='info'>Brand: {strain.brand}</p>
+                  <p className='info'>{strain.strainType}</p>
+                </div>
+              </div>
+            </div>
+
+
+
             {/* <StrainModal
               // className='strainM'
               onClick={()=>setShowStrain(false)}

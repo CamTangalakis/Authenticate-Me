@@ -9,6 +9,8 @@ const CheckinForm = ({setShowModal}) => {
     const dispatch = useDispatch()
     const [text, setText] = useState('')
     const [strainId, setStrainId] = useState()
+    const [rating, setRating] = useState(0)
+    const [photo, setPhoto] = useState('')
     const [errors, setErrors] = useState([])
 
     const sessionUser = useSelector(state => state.session.user);
@@ -19,7 +21,8 @@ const CheckinForm = ({setShowModal}) => {
         e.preventDefault();
 
         if(text && strainId) {
-            await dispatch(checkinActions.postCheckin({ userId, strainId, text }))
+            console.log(userId, strainId, text, rating, photo , '<<<----')
+            await dispatch(checkinActions.postCheckin({ userId, strainId, text, rating, photo }))
                 .catch(async (res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);
@@ -49,13 +52,74 @@ const CheckinForm = ({setShowModal}) => {
                 </select>
 
             <label id='checkinField'>Comment:</label>
-                <input
+                <textArea
                     id='checkinText'
-                    type='textarea'
                     placeholder='Say something...'
                     value={text}
                     onChange={(e)=>setText(e.target.value)}
                 />
+
+            <label id='checkinField'>Add Photo</label>
+                <input
+                    id='checkinText'
+                    type='text'
+                    placeholder='Add a photo...'
+                    value={photo}
+                    onChange={(e)=>setPhoto(e.target.value)}
+                />
+
+            <div className="rate">
+                <input
+                    type="radio"
+                    id="star5"
+                    name="rate"
+                    value={5}
+                    onClick={(e) => setRating(Number(e.target.value))}
+                />
+                <label htmlFor="star5" title="text">
+                    5 stars
+                </label>
+                <input
+                    type="radio"
+                    id="star4"
+                    name="rate"
+                    value={4}
+                    onClick={(e) => setRating(Number(e.target.value))}
+                />
+                <label htmlFor="star4" title="text">
+                    4 stars
+                </label>
+                <input
+                    type="radio"
+                    id="star3"
+                    name="rate"
+                    value={3}
+                    onClick={(e) => setRating(Number(e.target.value))}
+                />
+                <label htmlFor="star3" title="text">
+                    3 stars
+                </label>
+                <input
+                    type="radio"
+                    id="star2"
+                    name="rate"
+                    value={2}
+                    onClick={(e) => setRating(Number(e.target.value))}
+                />
+                <label htmlFor="star2" title="text">
+                    2 stars
+                </label>
+                <input
+                    type="radio"
+                    id="star1"
+                    name="rate"
+                    value={1}
+                    onClick={(e) => setRating(Number(e.target.value))}
+                />
+                <label htmlFor="star1" title="text">
+                    1 star
+                </label>
+        </div>
 
             <button type='submit' id='checkInButton'>Submit</button>
         </form>

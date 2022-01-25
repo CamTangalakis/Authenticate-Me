@@ -16,10 +16,10 @@ export const post = (content) => {
 }
 
 export const postCheckin = (content) => async (dispatch) => {
-    const {userId, strainId, text} = content
+    const {userId, strainId, text, rating, photo} = content
     const response = await csrfFetch('/api/checkins', {
         method: 'POST',
-        body: JSON.stringify({userId, strainId, text})
+        body: JSON.stringify({userId, strainId, text, rating, photo})
     })
     const newPost = await response.json()
     dispatch(post(newPost.checkin))
