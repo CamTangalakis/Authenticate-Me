@@ -1,25 +1,16 @@
 .navBar{
     background-color: rgb(14, 65, 14, 0.75);
     padding: 20px;
-    /* margin: 20px; */
-    /* width: 100%; */
     right: 0;
     left: 0;
-    /* border-bottom: 1px solid green; */
-}
-
-.weedia {
     display: flex;
-}
-
-.socialWeedia{
-    color: rgb(219, 223, 209);
+    align-items: center;
 }
 
 .homeButton{
     font-size: 30px;
     text-decoration: none;
-    padding: 5px;
+    padding: 7px 7px 0px 7px;
     background-color: rgb(9, 94, 47);
     color: rgb(219, 223, 209);
     height: fit-content;
@@ -35,9 +26,9 @@
 
 #formButtons{
     display: flex;
+    align-items: center;
     position: absolute;
     right: 10px;
-    top: 30px;
     padding: 10px;
 }
 
@@ -62,9 +53,9 @@
 
 #checkinButton{
     display: flex;
+    align-items: center;
     position: absolute;
     right: 10px;
-    top: 30px;
     padding: 10px;
 }
 

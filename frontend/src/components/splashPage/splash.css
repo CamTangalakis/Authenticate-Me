@@ -17,6 +17,49 @@
     color: rgb(219, 223, 209);
  }
 
-.splashIntro {
-    /* background: url('../../images/unTokdSplash.png'); */
+
+ .splashSteps {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     padding: 20px;
+ }
+
+ .splashStepsImages {
+    display: flex;
+    justify-content: space-between;
+ }
+
+ .splashStepsWords {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.splashNav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(23, 34, 54);
+    padding: 20px;
+    color: white;
+}
+
+.splashNavOne {
+    display: flex;
+}
+
+.splashNavTwo {
+    display: flex;
+}
+
+
+.splashJoin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }

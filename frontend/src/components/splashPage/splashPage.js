@@ -7,7 +7,7 @@ export default function SplashPage(){
         <div className='splashPage'>
 
             <div className='splashIntro'>
-                <img src='../../images/unTokdSplash.png' width='100%'/>
+                <img className='splashHeaderImage' src='https://user-images.githubusercontent.com/85664060/150947484-0150dcd1-1c12-4392-996f-8fa7ec1f0133.png' width='100%'/>
             </div>
 
             <div className='splashSteps'>
@@ -28,28 +28,30 @@ export default function SplashPage(){
             </div>
 
             <div className='splashNav'>
-                <div>
+                <div className='splashNavOne'>
                     <h2>discover new strains</h2>
                     <p>image</p>
                 </div>
 
-                <div>
+                <div className='splashNavTwo'>
                     <p>image</p>
                     <h2>share new finds</h2>
                 </div>
 
-                <div>
+                <div className='splashNavOne'>
                     <h2>see what's out there</h2>
                     <p>image</p>
                 </div>
             </div>
 
             <div className='splashJoin'>
-                <h1>join today and discover</h1>
-                <h1>what remains untokd!</h1>
+                <p>join today and discover</p>
+                <p>what remains untokd!</p>
 
-                <button>Sign Up</button>
-                <button>Log In</button>
+                <div>
+                    <button>Sign Up</button>
+                    <button>Log In</button>
+                </div>
             </div>
         </div>
     )
