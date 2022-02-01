@@ -100,6 +100,18 @@
     /* border-bottom: 1px solid green; */
 }
 
+.userInfo {
+    display: flex;
+    align-items: center;
+}
+
+.userPic {
+    width: 10%;
+    height: 10%;
+    border-radius: 100px;
+    margin: 5px;
+}
+
 .checkinText {
     height: fit-content;
 }

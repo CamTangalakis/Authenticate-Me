@@ -104,7 +104,7 @@ export const getCheckin = () => async (dispatch) => {
 export const getComment = () => async (dispatch) => {
     const comment = await csrfFetch('/api/comments')
     const data = await comment.json()
-    console.log(data, '!!!!!!!!!!!!!!!!!!!!!')
+    // console.log(data, '!!!!!!!!!!!!!!!!!!!!!')
     dispatch(get(data))
     return comment
 }

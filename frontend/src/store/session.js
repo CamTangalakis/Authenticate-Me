@@ -2,6 +2,7 @@ import {csrfFetch} from './csrf'
 
 const ADD_USER = 'session/add'
 const DEL_USER = 'session/del'
+const GET_USERS = 'session/get'
 
 export const add = (user) => {
     return {
@@ -14,6 +15,20 @@ export const del = () => {
     return {
         type: DEL_USER
     }
+}
+
+export const get = (content) => {
+    return {
+        type: GET_USERS,
+        payload: content
+    }
+}
+
+export const getUsers = () => async(dispatch) => {
+    const response = await csrfFetch('/api/users/')
+    const data = await response.json()
+    dispatch(get(data))
+    return response
 }
 
 export const login = (user) => async (dispatch) => {
@@ -66,6 +81,13 @@ const sessionReducer = (state={user:'Demo-used'}, action) => {
             newState = Object.assign({}, state);
             newState.user = null;
             return newState;
+        case GET_USERS:
+            newState = {...state}
+            newState.users = action.payload.reduce((accumulator, element)=> {
+                accumulator[element.id] = element
+                return accumulator
+            }, {});
+            return newState
         default:
             return state
     }

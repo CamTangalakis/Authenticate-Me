@@ -37,4 +37,9 @@ router.post('/', validateSignup, asyncHandler(async(req, res)=> {
     });
 }))
 
+router.get('/', asyncHandler(async(req, res) => {
+    let users = await User.findAll()
+    res.json(users)
+}))
+
 module.exports = router;
