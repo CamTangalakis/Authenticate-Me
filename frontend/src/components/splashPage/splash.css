@@ -29,7 +29,7 @@
      justify-content: center;
      align-items: center;
      padding: 20px;
-     margin-top: -.5vh;
+     margin-top: -.75vh;
      color: white;
      background-color: rgba(0,0,0,0.5);
  }
@@ -84,7 +84,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10vw;
+    padding: 10vh;
     background: linear-gradient(rgb(72, 158, 72), rgb(7, 37, 7));
     color: white;
     font-size: 50px;
@@ -100,3 +100,9 @@ p {
     padding: 0px;
 }
 
+.untokd {
+    font-weight: 600;
+    border-bottom: solid 2px white;
+    width: 30%;
+    text-align: center;
+}

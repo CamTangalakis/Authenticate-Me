@@ -46,7 +46,7 @@ export default function SplashPage(){
             <div className='splashJoin'>
                 <p className='splashJoinWords'>join today</p>
                 <p className='splashJoinWords'>and discover what remains </p>
-                <p className='splashJoinWords'>untokd!</p>
+                <p className='splashJoinWords untokd'>untokd!</p>
 
                 <div>
                     <LoginFormModal  className='loginButton'/>
