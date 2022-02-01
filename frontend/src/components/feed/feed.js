@@ -50,9 +50,8 @@ export default function FullFeed({checkin}) {
     return (
         <div id='feedParts'>
             <div className='userInfo'>
-
                 <img src={getUser(checkin?.userId)?.profilePic} className='userPic'/>
-                <div>{getUser(checkin?.userId)?.username}</div>
+                <div className='username'>{getUser(checkin?.userId)?.username}</div>
             </div>
 
             <div className='strainHeader'>

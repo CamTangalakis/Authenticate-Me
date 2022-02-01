@@ -103,17 +103,28 @@
 .userInfo {
     display: flex;
     align-items: center;
+    background-color: rgba(6, 53, 5, 0.25);
+    width: 100%;
+    margin: -10px;
+    padding: 10px;
 }
 
 .userPic {
-    width: 10%;
-    height: 10%;
+    width: 5vh;
+    height: 5vh;
     border-radius: 100px;
     margin: 5px;
 }
 
-.checkinText {
+.username {
+    margin: 10px;
+    font-weight: 600;
+    color: rgb(17, 61, 17)
+}
+
+#checkinText {
     height: fit-content;
+    margin: 10px;
 }
 
 .welcome {
@@ -126,9 +137,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
     margin-right: 20px;
     border-bottom: 2px solid green;
-    padding-bottom: 0px;
+    padding: 0px;
 }
 
 .feedButtons{
@@ -204,9 +216,24 @@
 
 .commentBody{
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    /* align-items: center; */
     justify-content: space-between;
-    border-bottom: 1px solid rgba(19, 107, 48,0.25);
+    height: fit-content;
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 2px;
+}
+
+.commentText {
+    padding: 10px;
+    margin: 10px;
+}
+
+.commentButtons {
+    margin-left: auto;
+    margin-right: 0px;
 }
 
 .commentDelete, .submitComment {
