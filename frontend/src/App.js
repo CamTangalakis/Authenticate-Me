@@ -6,6 +6,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/navigation/index";
 import SplashPage from "./components/splashPage/splashPage";
 import HomePage from "./components/HomePage/HomePage";
+import Footer from './components/Footer/footer'
 import './index.css'
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path='/home' exact={true} element={<HomePage /> } />
         <Route path='/dispensary'><h1>hellooooo</h1></Route>
       </Routes>
+    <Footer />
 
     </div>
   );

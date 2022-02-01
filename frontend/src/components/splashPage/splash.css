@@ -1,11 +1,15 @@
 .splashPage{
     /* background-image: url('../../images/Untitled_Artwork.png'); */
-    background-color: rgb(16, 61, 16);
+    /* background-color: rgb(16, 61, 16); */
     /* padding: 20px; */
     margin: -22px auto;
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.splashHeaderImage {
+    z-index: 1;
 }
 
  .splashButtonContainer{
@@ -20,10 +24,14 @@
 
  .splashSteps {
      display: flex;
+     z-index: 0;
      flex-direction: column;
      justify-content: center;
      align-items: center;
      padding: 20px;
+     margin-top: -.5vh;
+     color: white;
+     background-color: rgba(0,0,0,0.5);
  }
 
  .splashStepsImages {
@@ -31,9 +39,24 @@
     justify-content: space-between;
  }
 
+ .splashStepsImage {
+     width: 30%;
+     height: 30%;
+ }
+
+ .up {
+     margin-top: -25px;
+ }
+
  .splashStepsWords {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.splashStepsWord {
+    font-size: 2rem;
+    margin: 1vh 12vw;
 }
 
 
@@ -61,5 +84,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 10vw;
+    background: linear-gradient(rgb(72, 158, 72), rgb(7, 37, 7));
+    color: white;
+    font-size: 50px;
 }
+
+p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.splashJoinWords {
+    margin: 0px;
+    padding: 0px;
+}
+
