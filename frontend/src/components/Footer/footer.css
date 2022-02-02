@@ -3,13 +3,13 @@
     justify-content: center;
     /* margin-top: 30px; */
     padding: 30px;
-    background-color: rgba(49, 110, 62, 0.25);
+    background-color: rgba(20, 73, 32, 0.5);
     height: 30px;
     margin-top: 20px;
 }
 
 .devName {
-    color: rgb(202, 207, 226);
+    color: rgb(255, 255, 255);
     padding: 5px;
 }
 

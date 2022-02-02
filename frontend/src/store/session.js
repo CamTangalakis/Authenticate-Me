@@ -2,6 +2,7 @@ import {csrfFetch} from './csrf'
 
 const ADD_USER = 'session/add'
 const DEL_USER = 'session/del'
+const GET_USERS = 'session/get'
 
 export const add = (user) => {
     return {
@@ -16,9 +17,23 @@ export const del = () => {
     }
 }
 
+export const get = (content) => {
+    return {
+        type: GET_USERS,
+        payload: content
+    }
+}
+
+export const getUsers = () => async(dispatch) => {
+    const response = await csrfFetch('/api/users/')
+    const data = await response.json()
+    dispatch(get(data))
+    return response
+}
+
 export const login = (user) => async (dispatch) => {
     const {credential, password} = user
-    const response = await csrfFetch('/api/session', {
+    const response = await csrfFetch('/api/session/', {
         method: 'POST',
         body: JSON.stringify({credential, password})
     })
@@ -28,18 +43,18 @@ export const login = (user) => async (dispatch) => {
 }
 
 export const restoreUser = () => async (dispatch) => {
-    const response = await csrfFetch('/api/session')
+    const response = await csrfFetch('/api/session/')
     const res = await response.json()
     dispatch(add(res.user))
     return response
 }
 
 export const signup = (user) => async (dispatch) => {
-    const {username, email, password} = user
-    const response = await csrfFetch('/api/users', {
+    const {username, email, password, owner} = user
+    const response = await csrfFetch('/api/users/', {
         method: 'POST',
         body: JSON.stringify({
-            username, email, password
+            username, email, password, owner
         })
     })
     const data = await response.json()
@@ -48,7 +63,7 @@ export const signup = (user) => async (dispatch) => {
 }
 
 export const logout = () => async (dispatch) => {
-    const response = await csrfFetch('/api/session', {
+    const response = await csrfFetch('/api/session/', {
         method: "DELETE"
     })
     dispatch(del())
@@ -66,6 +81,13 @@ const sessionReducer = (state={user:'Demo-used'}, action) => {
             newState = Object.assign({}, state);
             newState.user = null;
             return newState;
+        case GET_USERS:
+            newState = {...state}
+            newState.users = action.payload.reduce((accumulator, element)=> {
+                accumulator[element.id] = element
+                return accumulator
+            }, {});
+            return newState
         default:
             return state
     }

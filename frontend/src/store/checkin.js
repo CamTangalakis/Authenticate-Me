@@ -94,7 +94,7 @@ export const get = (content) => {
 }
 
 export const getCheckin = () => async (dispatch) => {
-    const checkins = await csrfFetch('/api/checkins')
+    const checkins = await csrfFetch('/api/checkins/')
     const data = await checkins.json()
     // console.log(checkins, '!!!!!!!!11')
     dispatch(get(data))
@@ -102,9 +102,9 @@ export const getCheckin = () => async (dispatch) => {
 }
 
 export const getComment = () => async (dispatch) => {
-    const comment = await csrfFetch('/api/comments')
+    const comment = await csrfFetch('/api/comments/')
     const data = await comment.json()
-    console.log(data, '!!!!!!!!!!!!!!!!!!!!!')
+    // console.log(data, '!!!!!!!!!!!!!!!!!!!!!')
     dispatch(get(data))
     return comment
 }
@@ -117,7 +117,7 @@ export const del = (id) => {
 }
 
 export const delCheckin = (id) => async (dispatch) => {
-    const response = await csrfFetch(`/api/checkins/${id}`, {
+    const response = await csrfFetch(`/api/checkins/${id}/`, {
         method: 'DELETE'
     })
     dispatch(del(id))
@@ -132,7 +132,7 @@ export const delComm = (id, checkinId) => {
 }
 
 export const delComment = (id, checkinId) => async (dispatch) => {
-    const response = await csrfFetch(`/api/comments/${id}`, {
+    const response = await csrfFetch(`/api/comments/${id}/`, {
         method: 'DELETE'
     })
     dispatch(delComm(id, checkinId))

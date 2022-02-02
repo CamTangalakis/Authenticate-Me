@@ -4,7 +4,7 @@
     padding: 0px 20px;
     padding-bottom: 20px;
     background-color: rgb(10, 85, 39);
-    max-width: 150px;
+    width: 100%;
 }
 
 #signUpField{
@@ -20,4 +20,15 @@
 #signUpHeader{
     font-size: 30px;
     color: white;
+}
+
+.ownerButtons {
+    margin: 20px 0px 10px 0px;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ownerButton {
+    margin-right: -40px;
 }

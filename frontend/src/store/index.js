@@ -5,6 +5,7 @@ import sessionReducer from './session'
 import checkinReducer from './checkin'
 import strainReducer from './strain';
 import dispensaryReducer from './dispensary';
+import ratingReducer from './rating';
 // import favStrainReducer from './favStrain'
 
 const rootReducer = combineReducers({
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     checkin: checkinReducer,
     strain: strainReducer,
     dispensary: dispensaryReducer,
-    
+    rating: ratingReducer,
+
     // favStrain: favStrainReducer
 });
 

@@ -3,10 +3,10 @@ const asyncHandler = require('express-async-handler');
 const { Rating } = require('../../db/models');
 const router = express.Router();
 
-router.get('/', asyncHandler(async(req, res)=> {
-    let ratings = await Rating.findAll()
-    res.json(ratings)
-}))
+// router.get('/', asyncHandler(async(req, res)=> {
+//     let ratings = await Rating.findAll()
+//     res.json(ratings)
+// }))
 
 // router.post('/', asyncHandler(async(req, res) => {
 //     const {strainId, rating} = req.body

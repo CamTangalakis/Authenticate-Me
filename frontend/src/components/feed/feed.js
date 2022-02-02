@@ -1,19 +1,17 @@
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import * as checkinActions from '../../store/checkin';
-import * as commentActions from '../../store/checkin'
+import * as checkinActions from '../../store/checkin'
 import { Modal } from '../../context/Modal';
 import CheckinEditForm from "../checkins/CheckinEditForm";
 import CommentsFeed from "../comments/Comments";
 // import Delete from '../../images'
 import './feed.css'
-import { useNavigate } from "react-router-dom";
 
 export default function FullFeed({checkin}) {
-    const navigate = useNavigate()
     const dispatch = useDispatch()
     const currentUser = useSelector((state) => state.session.user)
     const strains = useSelector((state) => state.strain)
+    const users = useSelector((state)=> state.session.users)
 
     const [commentText, setCommentText] = useState('')
     const [showComments, setShowComments] = useState(false)
@@ -40,8 +38,18 @@ export default function FullFeed({checkin}) {
         }
     }
 
+    const getUser = (id) => {
+        for (let i in users) {
+            if (users[i].id === id) return users[i]
+        }
+    }
+
     return (
         <div id='feedParts'>
+            <div className='userInfo'>
+                <img src={getUser(checkin?.userId)?.profilePic} className='userPic'/>
+                <div className='username'>{getUser(checkin?.userId)?.username}</div>
+            </div>
 
             <div className='strainHeader'>
                 <h3>{strain?.name}</h3>

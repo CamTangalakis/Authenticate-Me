@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import { Modal } from "./context/Modal";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/navigation/index";
 import SplashPage from "./components/splashPage/splashPage";
 import HomePage from "./components/HomePage/HomePage";
 import Footer from './components/Footer/footer'
 import './index.css'
+// import { getRating } from "./store/rating";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(()=> setIsLoaded(true));
+    dispatch(sessionActions.getUsers())
+    // dispatch(getRating())
   }, [dispatch]);
 
   return (

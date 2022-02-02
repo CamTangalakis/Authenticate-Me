@@ -1,4 +1,4 @@
-import {csrfFetch} from './csrf'
+// import {csrfFetch} from './csrf'
 
 const GET = 'rating/get'
 const POST = 'rating/post'
@@ -17,16 +17,16 @@ export const post = (data) => {
     }
 }
 
-export const getRating = () => async (dispatch) => {
-    const rating = await csrfFetch('/api/ratings')
-    const data = await rating.json()
-    dispatch(get(data))
-    return rating
-}
+// export const getRating = () => async (dispatch) => {
+//     const rating = await csrfFetch('/api/ratings/')
+//     const data = await rating.json()
+//     dispatch(get(data))
+//     return rating
+// }
 
 // export const postRating = (data) => async (dispatch) => {
 //     const {strainId, rating} = data
-//     const response = await csrfFetch('/api/ratings', {
+//     const response = await csrfFetch('/api/ratings/', {
 //         method: 'POST',
 //         body: JSON.stringify({strainId, rating})
 //     })
@@ -39,12 +39,12 @@ const ratingReducer = (state=[], action) => {
     let newState
     switch(action.type){
         case GET:
-            newState = Object.assign({}, state);
+            newState = {...state};
             newState = action.payload;
             return newState;
-        // case POST:
-            // newState = {...state, [action.payload.strainId]:action.payload.rating}
-            // return newState
+        case POST:
+            newState = {...state, [action.payload.strainId]:action.payload.rating}
+            return newState
         default:
             return state
     }
