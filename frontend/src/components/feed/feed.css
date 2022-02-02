@@ -1,6 +1,7 @@
 .feedLayout{
     display: inline-flex;
     flex-direction: column;
+    padding-left: 20px;
 }
 
 .sideBar{
@@ -94,14 +95,14 @@
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
-    height: auto;
+    height: fit-content;
     width: 80%;
     /* border-bottom: 1px solid green; */
 }
 
-/* #checkinText {
-    /* border-bottom: 1px solid rgb(4, 68, 4); */
-
+.checkinText {
+    height: fit-content;
+}
 
 .welcome {
     font-size: 15px;
