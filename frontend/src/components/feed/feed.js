@@ -1,16 +1,13 @@
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import * as checkinActions from '../../store/checkin';
-import * as commentActions from '../../store/checkin'
+import * as checkinActions from '../../store/checkin'
 import { Modal } from '../../context/Modal';
 import CheckinEditForm from "../checkins/CheckinEditForm";
 import CommentsFeed from "../comments/Comments";
 // import Delete from '../../images'
 import './feed.css'
-import { useNavigate } from "react-router-dom";
 
 export default function FullFeed({checkin}) {
-    const navigate = useNavigate()
     const dispatch = useDispatch()
     const currentUser = useSelector((state) => state.session.user)
     const strains = useSelector((state) => state.strain)

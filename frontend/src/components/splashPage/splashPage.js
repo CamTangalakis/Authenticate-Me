@@ -14,9 +14,9 @@ export default function SplashPage(){
                 <h1>easy as...</h1>
 
                 <div className='splashStepsImages'>
-                    <img className='splashStepsImage up' src='https://user-images.githubusercontent.com/85664060/151910930-64a2f03b-dc2a-4777-8b27-038fc786414c.PNG'/>
-                    <img className='splashStepsImage' src='https://user-images.githubusercontent.com/85664060/151910901-4403e008-39db-4750-a1a1-2090f2c52b9f.PNG' />
-                    <img className='splashStepsImage' src='https://user-images.githubusercontent.com/85664060/151910864-7e97d599-d1a2-49d5-a838-0a2cd1b92311.PNG' />
+                    <img className='splashStepsImage up one' src='https://user-images.githubusercontent.com/85664060/151910930-64a2f03b-dc2a-4777-8b27-038fc786414c.PNG'/>
+                    <img className='splashStepsImage two' src='https://user-images.githubusercontent.com/85664060/151910901-4403e008-39db-4750-a1a1-2090f2c52b9f.PNG' />
+                    <img className='splashStepsImage three' src='https://user-images.githubusercontent.com/85664060/151910864-7e97d599-d1a2-49d5-a838-0a2cd1b92311.PNG' />
                 </div>
 
                 <div className='splashStepsWords'>

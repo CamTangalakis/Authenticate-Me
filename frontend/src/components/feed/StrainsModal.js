@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-// import { useSelector } from 'react-redux';
 import { Modal } from '../../context/Modal';
-import StrainModal from '../checkins/StrainModal'
-// import * as favStrainActions from '../../store/favStrain'
 import './feed.css'
 
-function StrainsModal({strain}, id) {
-  const dispatch = useDispatch()
-  const userId = useSelector(state=>state.session?.user?.id)
-  const [showModal, setShowModal] = useState(false);
+function StrainsModal({strain}) {
   const [showStrain, setShowStrain] = useState(false)
 
   return (

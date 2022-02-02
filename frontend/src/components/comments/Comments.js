@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import CommentEditModal from './commentModal'
 import * as commentActions from '../../store/checkin'
 import '../feed/feed.css'
-import { getUsers } from '../../store/session'
 
 export default function CommentsFeed ({checkin}) {
     const dispatch = useDispatch()
