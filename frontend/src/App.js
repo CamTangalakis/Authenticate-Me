@@ -7,6 +7,7 @@ import SplashPage from "./components/splashPage/splashPage";
 import HomePage from "./components/HomePage/HomePage";
 import Footer from './components/Footer/footer'
 import './index.css'
+import AboutPage from "./components/About/about";
 // import { getRating } from "./store/rating";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path='/' exact={true} element={<SplashPage />} />
         <Route path='/home' exact={true} element={<HomePage /> } />
         <Route path='/dispensary'><h1>hellooooo</h1></Route>
+        <Route path='/about' element={<AboutPage />}></Route>
       </Routes>
     <Footer />
 
