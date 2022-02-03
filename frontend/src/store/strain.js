@@ -8,6 +8,7 @@ export const get = (data) => {
         payload: data
     }
 }
+
 export const getStrain = () => async (dispatch) => {
     const strain = await csrfFetch('/api/strains')
     const data = await strain.json()
