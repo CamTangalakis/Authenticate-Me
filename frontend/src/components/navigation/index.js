@@ -38,10 +38,7 @@ function Navigation({ isLoaded }){
 
   return (
     <ul className='navBar'>
-      <div className='weedia'>
-        <NavLink exact to="/" className='homeButton'>unTokd</NavLink>
-        <h3 className='socialWeedia'>the social weedia network</h3>
-      </div>
+        <NavLink exact to="/home" className='homeButton'><img width='100px' height='35px' src='https://user-images.githubusercontent.com/85664060/151060608-818f19af-50b7-4a8e-897d-2ae7c381906d.png'></img></NavLink>
         {isLoaded && sessionLinks}
     </ul>
   );

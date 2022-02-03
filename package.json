@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "react-router-dom": "^6.0.0",
+    "react-router": "^6.2.1",
+    "react-router-dom": "^6.2.1",
     "sequelize": "^6.9.0"
   },
-  "devDependencies": {},
   "scripts": {
     "heroku-postbuild": "npm run build --prefix frontend",
     "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",

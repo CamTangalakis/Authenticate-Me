@@ -3,7 +3,9 @@ module.exports = (sequelize, DataTypes) => {
   const Checkin = sequelize.define('Checkin', {
     userId: DataTypes.INTEGER,
     strainId: DataTypes.INTEGER,
-    text: DataTypes.TEXT
+    text: DataTypes.TEXT,
+    rating: DataTypes.INTEGER,
+    photo: DataTypes.STRING,
   }, {});
   Checkin.associate = function(models) {
     Checkin.hasMany(models.Comment, {foreignKey: 'checkinId', onDelete: 'cascade', hooks: true})

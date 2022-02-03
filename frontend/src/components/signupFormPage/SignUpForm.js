@@ -10,18 +10,19 @@ const SignUpFormPage = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [owner, setOwner] = useState(false)
     const [errors, setErrors] = useState([])
+    console.log(owner, '<------==-=-=-')
 
     const onSubmit = async(e) => {
         e.preventDefault()
         if(password === confirmPassword){
             setErrors([])
-
-            return dispatch(sessionActions.signup({email, username, password}))
+            return dispatch(sessionActions.signup({email, username, password, owner}))
                 .catch(async (res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);
-          });
+            });
         }
         return setErrors(['Confirm Password field must be the same as the Password field']);
     }
@@ -44,6 +45,12 @@ const SignUpFormPage = () => {
                     placeholder='Enter email'
                     value={email}
                     onChange={(e)=>setEmail(e.target.value)} />
+            <div className='ownerButtons'>
+                <input name='owner' type='radio' value='true' className='ownerButton' onClick={(e)=>setOwner(e.target.value)}/>
+                <label>Owner</label>
+                <input name='owner' type='radio' value='false' className='ownerButton' onClick={(e)=>setOwner(e.target.value)}/>
+                <label>Stoner</label>
+            </div>
             <label id='signUpField'>Password:</label>
                 <input
                     type='password'

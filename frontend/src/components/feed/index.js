@@ -9,12 +9,10 @@ export default function Feed() {
     const dispatch = useDispatch()
     const checkins = useSelector((state) => ({...state.checkin}))
 
-    // console.log(comments, '<-----------------')
-    // console.log(checkins, strains, '<-----------------')
-
     useEffect(()=> {
         dispatch(checkinActions.getCheckin())
     }, [dispatch])
+    console.log('IN THE FEED!!!!!!!!!!!!!!!!1')
 
     return (
         <div className='feedLayout'>

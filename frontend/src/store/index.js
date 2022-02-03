@@ -3,15 +3,18 @@ import thunk from 'redux-thunk';
 
 import sessionReducer from './session'
 import checkinReducer from './checkin'
-import commentReducer from './comment'
 import strainReducer from './strain';
+import dispensaryReducer from './dispensary';
+import ratingReducer from './rating';
 // import favStrainReducer from './favStrain'
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     checkin: checkinReducer,
-    comment: commentReducer,
     strain: strainReducer,
+    dispensary: dispensaryReducer,
+    rating: ratingReducer,
+
     // favStrain: favStrainReducer
 });
 

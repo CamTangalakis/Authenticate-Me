@@ -23,6 +23,15 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING.BINARY,
       validate: { len: [60,60] }
+    },
+    owner: {
+      allowNull: false,
+      type: DataTypes.BOOLEAN,
+      // defaultValue: false
+    },
+    profilePic: {
+      type: DataTypes.STRING,
+      defaultValue: "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
     }
   }, {
     defaultScope: {
@@ -75,12 +84,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  User.signup = async function ({ username, email, password }) {
+  User.signup = async function ({ username, email, password, owner }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
       username,
       email,
       hashedPassword,
+      owner
     });
     return await User.scope('currentUser').findByPk(user.id);
   };
