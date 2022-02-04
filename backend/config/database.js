@@ -5,6 +5,7 @@ const username = db.username;
 const password = db.password;
 const database = db.database;
 const host = db.host;
+const Env = require('dotenv').config();
 
 module.exports = {
   development: {
@@ -14,6 +15,7 @@ module.exports = {
     host,
     dialect: 'postgres',
     seederStorage: 'sequelize',
+    use_env_variable: 'DATABASE_URL',
   },
   production: {
     use_env_variable: 'DATABASE_URL',
