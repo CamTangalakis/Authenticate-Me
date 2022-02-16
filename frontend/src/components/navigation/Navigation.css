@@ -111,11 +111,11 @@
 .aboutButton {
     font-size: 15px;
     text-decoration: none;
-    padding: 7px 7px 0px 7px;
+    padding: 7px;
     background-color: rgb(9, 94, 47);
     color: rgb(219, 223, 209);
     height: fit-content;
-    margin-right: 10px;
+    width: fit-content;
     border: none;
     border-radius: 5px;
 }
