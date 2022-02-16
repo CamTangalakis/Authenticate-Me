@@ -23,14 +23,14 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <div id='checkinButton'>
         <CheckinFormModal id='formButton'/>
-        <NavLink exact to='/about' className='formButton'>About</NavLink>
+        {/* <NavLink exact to='/about' className='formButton'>About</NavLink> */}
         <ProfileButton id='formButton' user={sessionUser} />
       </div>
     );
   } else {
     sessionLinks = (
       <div id='formButtons'>
-        <NavLink exact to='/about' className='homeButton'>About</NavLink>
+        {/* <NavLink exact to='/about' className='homeButton'>About</NavLink> */}
         <LoginFormModal id='formButton'/>
         <SignUpFormModal id='formButton'/>
         <button type='button' id='formButton' onClick={loginGuest}>Guest User</button>
