@@ -97,8 +97,12 @@
     border-radius: 5px;
 }
 
+.userEmail {
+    margin-bottom: 15px;
+}
+
 #logoutButton {
-    margin-top: 5px;
+    margin-top: 15px;
     margin-left: 25px;
     padding: 5px;
     border: none;

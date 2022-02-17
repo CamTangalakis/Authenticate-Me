@@ -39,7 +39,7 @@ function ProfileButton({ user }) {
       {showMenu && (
         <ul className="profile-dropdown">
           <li>{user.username}</li>
-          <li>{user.email}</li>
+          <li className='userEmail'>{user.email}</li>
           <li>
             <NavLink exact to='/about' className='aboutButton'>About unTokd</NavLink>
             <button id='logoutButton' onClick={logout}>Log Out</button>
