@@ -129,6 +129,12 @@
     margin: 10px;
 }
 
+.checkinPhoto {
+    margin: auto;
+    width: 50%;
+    
+}
+
 .welcome {
     font-size: 15px;
     padding: 5px;

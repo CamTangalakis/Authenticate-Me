@@ -56,6 +56,7 @@ export default function FullFeed({checkin}) {
                 <p className='stars'>{stars}</p>
             </div>
             <p id='checkinText'>{checkin?.text}</p>
+            {checkin?.photo ? (<img className='checkinPhoto' src={checkin?.photo} />): null}
 
             <div className='feedButtons'>
                 <button type='button' id='commentButton' onClick={() => setShowComments(!showComments)}><strong>Comment</strong> <i class="fas fa-chevron-down"></i></button>
